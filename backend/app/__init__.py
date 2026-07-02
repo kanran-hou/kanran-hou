@@ -1,0 +1,1 @@
+# CopyMind Backend Application Package

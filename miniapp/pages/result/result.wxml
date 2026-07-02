@@ -1,0 +1,273 @@
+﻿<!--
+  CopyMind 分析结果页
+  包含：总体评分区、5 维评分卡片、维度详情 Tab、优化建议 Tab
+-->
+<view class="page">
+
+  <!-- ====== 顶部返回栏 ====== -->
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text class="nav-back-icon">‹</text>
+      <text class="nav-back-text">返回</text>
+    </view>
+    <text class="nav-title">分析结果</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <scroll-view class="scroll-area" scroll-y enhanced show-scrollbar="{{false}}">
+
+    <!-- ====== 总体评分区 ====== -->
+    <view class="hero-section">
+      <view class="hero-score-wrap">
+        <!-- 圆形分数标识（背景色随等级变化） -->
+        <view class="score-circle" style="background:{{gradeColor}};">
+          <view class="score-circle-inner">
+            <text class="score-number">{{overallScore}}</text>
+            <text class="score-grade-label">{{overallGrade}}</text>
+          </view>
+        </view>
+        <view class="hero-text">
+          <text class="hero-title">综合评分</text>
+          <text class="hero-rank">超过 <text style="color:{{gradeColor}};font-weight:700">{{percentile}}%</text> 同类文案</text>
+          <text class="hero-track">{{trackName}} · {{wordCount}}字</text>
+        </view>
+      </view>
+      <!-- 底部进度条 -->
+      <view class="hero-bar-bg">
+        <view class="hero-bar-fill" style="width:{{overallScore}}%;background:{{gradeColor}};"></view>
+      </view>
+    </view>
+
+    <!-- ====== 5 维评分卡片 ====== -->
+    <view class="dims-row">
+      <view
+        wx:for="{{dimensions}}"
+        wx:key="id"
+        class="dim-card {{activeDim === index ? 'dim-active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onDimTap"
+      >
+        <text class="dim-score" style="color:{{item.color}}">{{item.score}}</text>
+        <view class="dim-bar-bg">
+          <view class="dim-bar-fill" style="width:{{item.score}}%;background:{{item.color}}"></view>
+        </view>
+        <text class="dim-name">{{item.name}}</text>
+        <text class="dim-grade" style="background:{{item.color}}">{{item.grade}}</text>
+      </view>
+    </view>
+
+    <!-- ====== Tab 栏 ====== -->
+    <view class="tab-bar">
+      <view class="tab-item {{currentTab === 'detail' ? 'tab-active' : ''}}" data-tab="detail" bindtap="onTabSwitch">
+        <text>维度详情</text>
+      </view>
+      <view class="tab-item {{currentTab === 'suggest' ? 'tab-active' : ''}}" data-tab="suggest" bindtap="onTabSwitch">
+        <text>优化建议</text>
+      </view>
+    </view>
+
+    <!-- ====== Tab: 维度详情 ====== -->
+    <view wx:if="{{currentTab === 'detail' && dimensions.length > 0}}">
+      <view class="detail-section">
+        <!-- 当前维度标题 -->
+        <view class="detail-header">
+          <text class="detail-dim-name">{{dimensions[activeDim].name}}</text>
+          <text class="detail-dim-score" style="color:{{dimensions[activeDim].color}}">{{dimensions[activeDim].score}}分</text>
+        </view>
+        <text class="detail-conclusion">{{dimensions[activeDim].conclusion}}</text>
+
+        <!-- 检测要素列表 -->
+        <view class="element-list">
+          <view
+            wx:for="{{dimensions[activeDim].elements}}"
+            wx:key="index"
+            class="element-item element-{{item.s}}"
+          >
+            <text class="element-icon">
+              {{item.s === 'ok' ? '✓' : (item.s === 'weak' ? '△' : '✗')}}
+            </text>
+            <view class="element-info">
+              <text class="element-name">{{item.n}}</text>
+              <text class="element-value">{{item.v}}{{item.s === 'miss' ? '（未检测到）' : ''}}</text>
+            </view>
+            <text class="element-tag element-tag-{{item.s}}">
+              {{item.s === 'ok' ? '充足' : (item.s === 'weak' ? '不足' : '缺失')}}
+            </text>
+          </view>
+        </view>
+
+        <!-- 情绪词云（仅在显示情绪维时展示） -->
+        <view wx:if="{{dimensions[activeDim].id === 'emotion' && emotionWords.positive && emotionWords.positive.length > 0}}" class="emotion-cloud">
+          <text class="cloud-title">情绪词云</text>
+          <view class="cloud-tags">
+            <text wx:for="{{emotionWords.positive}}" wx:key="index" class="cloud-tag cloud-positive">{{item}}</text>
+            <text wx:for="{{emotionWords.empathetic}}" wx:key="index" class="cloud-tag cloud-empathetic">{{item}}</text>
+            <text wx:for="{{emotionWords.anxious}}" wx:key="index" class="cloud-tag cloud-anxious">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ====== Tab: 优化建议 ====== -->
+    <view wx:if="{{currentTab === 'suggest' && suggestions.titles}}">
+      <view class="suggest-section">
+
+        <!-- 1. 标题改写方案 -->
+        <view class="suggest-block">
+          <view class="suggest-block-header">
+            <text class="suggest-block-icon">✏️</text>
+            <text class="suggest-block-title">标题改写方案</text>
+          </view>
+          <view class="title-cards">
+            <view wx:for="{{suggestions.titles}}" wx:for-item="t" wx:key="index" class="title-card">
+              <text class="title-num">方案{{index + 1}}</text>
+              <text class="title-text">{{t.rewrite}}</text>
+              <view class="copy-btn" data-text="{{t.rewrite}}" bindtap="onCopy">
+                <text>复制</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 2. 段落调整 -->
+        <view wx:if="{{suggestions.paragraphs && suggestions.paragraphs.length > 0}}" class="suggest-block">
+          <view class="suggest-block-header">
+            <text class="suggest-block-icon">📝</text>
+            <text class="suggest-block-title">正文段落调整</text>
+          </view>
+          <view wx:for="{{suggestions.paragraphs}}" wx:for-item="p" wx:key="index" class="para-card">
+            <view class="para-pos">{{p.pos}}</view>
+            <text class="para-suggestion">{{p.suggestion}}</text>
+            <view class="para-detail-wrap">
+              <text class="para-detail-label">分析依据：</text>
+              <text class="para-detail">{{p.detail}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 3. 情绪词建议 -->
+        <view wx:if="{{suggestions.emotions && suggestions.emotions.length > 0}}" class="suggest-block">
+          <view class="suggest-block-header">
+            <text class="suggest-block-icon">💬</text>
+            <text class="suggest-block-title">新增高互动情绪词</text>
+          </view>
+          <view class="emotion-suggest-list">
+            <view wx:for="{{suggestions.emotions}}" wx:for-item="e" wx:key="index" class="emotion-suggest-item">
+              <text class="emotion-word-badge">+ {{e.word}}</text>
+              <text class="emotion-reason">{{e.reason}}</text>
+              <view class="copy-btn copy-btn-sm" data-text="{{e.word}}" bindtap="onCopy">
+                <text>复制</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 4. 参考案例（RAG 知识库匹配） -->
+        <view wx:if="{{referenceCases && referenceCases.length > 0}}" class="suggest-block">
+          <view class="suggest-block-header">
+            <text class="suggest-block-icon">📊</text>
+            <text class="suggest-block-title">同赛道参考案例</text>
+          </view>
+          <text class="ref-hint">以下为知识库匹配到的相似高分文案，供参考优化</text>
+          <view class="ref-cases">
+            <view wx:for="{{referenceCases}}" wx:for-item="rc" wx:key="index" class="ref-card">
+              <view class="ref-top">
+                <text class="ref-title">{{rc.title}}</text>
+                <text class="ref-score" style="color:{{rc.color}}">{{rc.score}}分</text>
+              </view>
+              <view class="ref-tags">
+                <text wx:for="{{rc.tags}}" wx:key="tag" class="ref-tag">{{item}}</text>
+              </view>
+              <view class="ref-bottom">
+                <text class="ref-sim">相似度：{{rc.similarity}}</text>
+                <view class="copy-btn" data-text="{{rc.title}}" bindtap="onCopy">
+                  <text>收藏</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 5. 卖点重构 -->
+        <view wx:if="{{suggestions.structure && suggestions.structure.length > 0}}" class="suggest-block">
+          <view class="suggest-block-header">
+            <text class="suggest-block-icon">🔨</text>
+            <text class="suggest-block-title">卖点重构建议</text>
+          </view>
+          <view wx:for="{{suggestions.structure}}" wx:for-item="s" wx:key="index" class="struct-card">
+            <view class="struct-row">
+              <text class="struct-label">原结构：</text>
+              <text class="struct-val struct-original">{{s.original}}</text>
+            </view>
+            <view class="struct-row">
+              <text class="struct-label">建议调整为：</text>
+              <text class="struct-val struct-new">{{s.suggestion}}</text>
+            </view>
+            <view class="struct-reason">
+              <text>原因：{{s.reason}}</text>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <!-- ====== 底部操作按钮 ====== -->
+    <view class="action-bar">
+      <view class="action-btn action-btn-primary" bindtap="onReAnalyze">
+        <text>🔄 重新分析</text>
+      </view>
+      <view class="action-btn action-btn-secondary" bindtap="onSaveReport">
+        <text>💾 保存报告</text>
+      </view>
+      <view class="action-btn action-btn-secondary" bindtap="goHistory">
+        <text>📋 历史记录</text>
+      </view>
+    </view>
+
+    <!-- ====== 底部安全区域 ====== -->
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+</view>
+  <!-- ====== 反馈弹窗遮罩 ====== -->
+  <view wx:if="{{showFeedbackPopup}}" class="feedback-overlay" bindtap="onCloseFeedback"></view>
+
+  <!-- ====== 反馈弹窗 ====== -->
+  <view wx:if="{{showFeedbackPopup}}" class="feedback-popup">
+    <view class="feedback-header">
+      <text class="feedback-title">提交反馈</text>
+      <text class="feedback-close" bindtap="onCloseFeedback">✕</text>
+    </view>
+    <view class="feedback-body">
+      <view class="feedback-type-group">
+        <text class="feedback-label">反馈类型</text>
+        <view class="feedback-type-options">
+          <view
+            wx:for="{{feedbackTypes}}"
+            wx:key="id"
+            class="feedback-type-option {{selectedFeedbackType === item.id ? 'feedback-type-active' : ''}}"
+            data-id="{{item.id}}"
+            bindtap="onFeedbackTypeSelect"
+          >
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="feedback-text-group">
+        <text class="feedback-label">详细描述（选填）</text>
+        <textarea
+          class="feedback-text-input"
+          placeholder="请简单描述您遇到的问题或建议（最多 500 字）……"
+          value="{{feedbackText}}"
+          bindinput="onFeedbackTextInput"
+          maxlength="500"
+          auto-height
+        ></textarea>
+        <text class="feedback-char-count">{{feedbackText.length}} / 500</text>
+      </view>
+    </view>
+    <view class="feedback-footer">
+      <button class="feedback-submit-btn {{feedbackSubmitting ? 'feedback-submit-disabled' : ''}}" disabled="{{feedbackSubmitting}}" loading="{{feedbackSubmitting}}" bindtap="onSubmitFeedback">
+        {{feedbackSubmitting ? '提交中…' : '提交反馈'}}
+      </button>
+    </view>
+  </view>

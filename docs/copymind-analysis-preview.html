@@ -1,0 +1,512 @@
+ <!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ <title>CopyMind · 文案智能分析</title>
+ <style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ :root {
+   --bg: #f5f6f8;
+   --card: #ffffff;
+   --primary: #5a67d8;
+   --primary-light: #ebedff;
+   --text: #1a1a2e;
+   --text-secondary: #6b7280;
+   --border: #e5e7eb;
+ }
+ body {
+   font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue", sans-serif;
+   background: var(--bg);
+   color: var(--text);
+   max-width: 420px;
+   margin: 0 auto;
+   min-height: 100vh;
+   -webkit-font-smoothing: antialiased;
+ }
+ .navbar {
+   background: var(--card);
+   padding: 12px 16px;
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   border-bottom: 1px solid var(--border);
+ }
+ .navbar .back {
+   width: 32px; height: 32px;
+   display: flex; align-items: center; justify-content: center;
+   border: none; background: none;
+   font-size: 20px; color: var(--text);
+   cursor: pointer;
+   border-radius: 8px;
+ }
+ .navbar .back:hover { background: var(--bg); }
+ .navbar h1 { font-size: 17px; font-weight: 600; flex: 1; }
+ .navbar .action {
+   font-size: 14px; color: var(--primary);
+   border: none; background: none;
+   cursor: pointer; padding: 6px 12px;
+   border-radius: 6px; font-weight: 500;
+ }
+ .navbar .action:hover { background: var(--primary-light); }
+ .container { padding: 16px; }
+ .card {
+   background: var(--card);
+   border-radius: 12px;
+   padding: 20px;
+   margin-bottom: 16px;
+   box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ }
+ .card-title {
+   font-size: 15px;
+   font-weight: 600;
+   margin-bottom: 16px;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+ }
+ .card-title .icon {
+   width: 22px; height: 22px;
+   border-radius: 6px;
+   display: flex; align-items: center; justify-content: center;
+   font-size: 13px;
+ }
+ 
+ /* ===== 输入页 ===== */
+ .input-label {
+   font-size: 14px;
+   font-weight: 600;
+   color: var(--text);
+   margin-bottom: 8px;
+   display: block;
+ }
+ .input-textarea {
+   width: 100%;
+   min-height: 180px;
+   padding: 14px;
+   border: 1.5px solid var(--border);
+   border-radius: 10px;
+   font-size: 14px;
+   font-family: inherit;
+   line-height: 1.6;
+   color: var(--text);
+   resize: vertical;
+   outline: none;
+   transition: border-color 0.2s;
+ }
+ .input-textarea:focus { border-color: var(--primary); }
+ .input-textarea::placeholder { color: #a0aec0; }
+ 
+ .track-selector {
+   display: flex;
+   gap: 8px;
+   flex-wrap: wrap;
+ }
+ .track-option {
+   padding: 8px 16px;
+   border: 1.5px solid var(--border);
+   border-radius: 999px;
+   font-size: 13px;
+   font-weight: 500;
+   cursor: pointer;
+   background: var(--card);
+   color: var(--text-secondary);
+   transition: all 0.2s;
+   user-select: none;
+ }
+ .track-option:hover { border-color: var(--primary); color: var(--primary); }
+ .track-option.active {
+   background: var(--primary);
+   color: #fff;
+   border-color: var(--primary);
+ }
+ 
+ .btn-analyze {
+   width: 100%;
+   padding: 16px;
+   border: none;
+   border-radius: 10px;
+   font-size: 16px;
+   font-weight: 600;
+   cursor: pointer;
+   background: var(--primary);
+   color: #fff;
+   text-align: center;
+   transition: opacity 0.2s;
+   margin-top: 4px;
+ }
+ .btn-analyze:hover { opacity: 0.85; }
+ .btn-analyze:disabled { opacity: 0.5; cursor: not-allowed; }
+ 
+ .char-count {
+   text-align: right;
+   font-size: 12px;
+   color: var(--text-secondary);
+   margin-top: 6px;
+ }
+ 
+ /* ===== 结果页 ===== */
+ .grade-section {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   padding: 8px 0;
+ }
+ .grade-badge {
+   width: 80px; height: 80px;
+   border-radius: 50%;
+   display: flex; align-items: center; justify-content: center;
+   flex-shrink: 0;
+   font-size: 36px;
+   font-weight: 800;
+   color: #fff;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+ }
+ .grade-badge.S { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+ .grade-badge.A { background: linear-gradient(135deg, #10b981, #059669); }
+ .grade-badge.B { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+ .grade-badge.C { background: linear-gradient(135deg, #9ca3af, #6b7280); }
+ .grade-info { flex: 1; }
+ .grade-info .label {
+   font-size: 13px;
+   color: var(--text-secondary);
+   margin-bottom: 4px;
+ }
+ .grade-info .score-number {
+   font-size: 28px;
+   font-weight: 700;
+   color: var(--text);
+   line-height: 1.2;
+ }
+ .grade-info .score-number span { font-size: 16px; font-weight: 400; color: var(--text-secondary); }
+ .grade-info .desc {
+   font-size: 13px;
+   color: var(--text-secondary);
+   margin-top: 4px;
+ }
+ .grade-info .desc strong { color: var(--primary); }
+ 
+ .dimensions { display: flex; flex-direction: column; gap: 12px; }
+ .dim-row { display: flex; align-items: center; gap: 12px; }
+ .dim-label {
+   width: 42px;
+   font-size: 13px;
+   font-weight: 500;
+   color: var(--text);
+   flex-shrink: 0;
+ }
+ .dim-bar-wrap {
+   flex: 1;
+   height: 8px;
+   background: #f0f0f5;
+   border-radius: 999px;
+   overflow: hidden;
+ }
+ .dim-bar-fill {
+   height: 100%;
+   border-radius: 999px;
+   transition: width 0.6s ease;
+ }
+ .dim-bar-fill.high { background: linear-gradient(90deg, #10b981, #059669); }
+ .dim-bar-fill.mid { background: linear-gradient(90deg, #f59e0b, #d97706); }
+ .dim-bar-fill.low { background: linear-gradient(90deg, #ef4444, #dc2626); }
+ .dim-score {
+   width: 36px;
+   text-align: right;
+   font-size: 14px;
+   font-weight: 600;
+   color: var(--text);
+   flex-shrink: 0;
+ }
+ 
+ .suggest-list { list-style: none; }
+ .suggest-item {
+   display: flex;
+   gap: 12px;
+   padding: 12px 0;
+   border-bottom: 1px solid var(--border);
+ }
+ .suggest-item:last-child { border-bottom: none; }
+ .suggest-item .num {
+   width: 22px; height: 22px;
+   border-radius: 50%;
+   background: var(--primary-light);
+   color: var(--primary);
+   display: flex; align-items: center; justify-content: center;
+   font-size: 12px; font-weight: 600;
+   flex-shrink: 0;
+   margin-top: 1px;
+ }
+ .suggest-item .body { flex: 1; }
+ .suggest-item .body p { font-size: 14px; line-height: 1.6; color: var(--text); }
+ .suggest-item .body .tag {
+   display: inline-block;
+   font-size: 11px;
+   padding: 1px 8px;
+   border-radius: 999px;
+   margin-top: 6px;
+   font-weight: 500;
+ }
+ .tag-title { background: #fef3cd; color: #92400e; }
+ .tag-structure { background: #dbeafe; color: #1e40af; }
+ .tag-emotion { background: #fce7f3; color: #9d174d; }
+ 
+ .actions { display: flex; gap: 12px; }
+ .btn {
+   flex: 1;
+   padding: 14px;
+   border: none;
+   border-radius: 10px;
+   font-size: 15px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: opacity 0.2s;
+   text-align: center;
+ }
+ .btn:hover { opacity: 0.85; }
+ .btn-primary { background: var(--primary); color: #fff; }
+ .btn-outline {
+   background: var(--card);
+   color: var(--text);
+   border: 1.5px solid var(--border);
+ }
+ 
+ .meta {
+   display: flex;
+   gap: 16px;
+   font-size: 12px;
+   color: var(--text-secondary);
+   padding: 8px 0 0;
+   border-top: 1px solid var(--border);
+   margin-top: 16px;
+ }
+ .meta span { display: flex; align-items: center; gap: 4px; }
+ 
+ .track-badge {
+   display: inline-flex;
+   align-items: center;
+   gap: 4px;
+   font-size: 12px;
+   padding: 3px 10px;
+   border-radius: 999px;
+   background: var(--primary-light);
+   color: var(--primary);
+   font-weight: 500;
+ }
+ 
+ /* ===== 页面切换 ===== */
+ .page { display: none; }
+ .page.active { display: block; }
+ 
+ /* ===== 加载动画 ===== */
+ .loading-overlay {
+   display: none;
+   position: fixed; inset: 0;
+   background: rgba(255,255,255,0.85);
+   z-index: 100;
+   align-items: center; justify-content: center;
+   flex-direction: column;
+   gap: 16px;
+ }
+ .loading-overlay.active { display: flex; }
+ .spinner {
+   width: 40px; height: 40px;
+   border: 3px solid var(--border);
+   border-top-color: var(--primary);
+   border-radius: 50%;
+   animation: spin 0.8s linear infinite;
+ }
+ @keyframes spin { to { transform: rotate(360deg); } }
+ .loading-overlay p { font-size: 14px; color: var(--text-secondary); }
+ </style>
+ </head>
+ <body>
+ 
+ <!-- 导航栏 -->
+ <div class="navbar">
+   <button class="back" id="btnBack" style="visibility:hidden;" onclick="goBack()">&#8592;</button>
+   <h1 id="navTitle">文案分析</h1>
+   <button class="action" id="btnSave" style="display:none;">保存</button>
+ </div>
+ 
+ <div class="container">
+ 
+   <!-- ====== 输入页 ====== -->
+   <div class="page active" id="pageInput">
+     <div class="card">
+       <label class="input-label">粘贴文案</label>
+       <textarea class="input-textarea" id="txtInput" placeholder="在此粘贴或输入你的文案内容……"></textarea>
+       <div class="char-count"><span id="charCount">0</span> 字</div>
+     </div>
+ 
+     <div class="card">
+       <label class="input-label">选择赛道</label>
+       <div class="track-selector">
+         <div class="track-option" data-track="xiaohongshu">&#128247; 小红书种草</div>
+         <div class="track-option" data-track="ecommerce">&#128722; 电商商品</div>
+         <div class="track-option" data-track="local_tourism">&#127963; 本地文旅</div>
+         <div class="track-option" data-track="short_video">&#127916; 短视频脚本</div>
+       </div>
+     </div>
+ 
+     <button class="btn-analyze" onclick="startAnalysis()">开始分析</button>
+ 
+     <div style="margin-top:12px;text-align:center;font-size:12px;color:var(--text-secondary);line-height:1.6;">
+       支持小红书种草、电商商品、本地文旅、短视频脚本四种赛道<br>
+       输入文案后选择赛道，AI 将进行 5 维度结构化分析
+     </div>
+   </div>
+ 
+   <!-- ====== 结果页 ====== -->
+   <div class="page" id="pageResult">
+ 
+     <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+       <span class="track-badge" id="resultTrack">--</span>
+       <span id="resultTime" style="font-size:12px;color:var(--text-secondary);">分析于 --</span>
+     </div>
+ 
+     <div class="card">
+       <div class="card-title">
+         <span class="icon" style="background:var(--primary-light);color:var(--primary);">&#9733;</span>
+         综合评级
+       </div>
+       <div class="grade-section">
+         <div class="grade-badge S" id="resultGradeBadge">S</div>
+         <div class="grade-info">
+           <div class="label">综合流量评分</div>
+           <div class="score-number"><span id="resultOverallScore">--</span> <span>/ 100</span></div>
+           <div class="desc" id="resultDesc">--</div>
+         </div>
+       </div>
+     </div>
+ 
+     <div class="card">
+       <div class="card-title">
+         <span class="icon" style="background:#fef3cd;color:#92400e;">&#9878;</span>
+         五维分析
+       </div>
+       <div class="dimensions" id="dimensionsContainer"></div>
+     </div>
+ 
+     <div class="card">
+       <div class="card-title">
+         <span class="icon" style="background:#e0f2fe;color:#0369a1;">&#9997;</span>
+         优化建议
+       </div>
+       <ul class="suggest-list" id="suggestionsContainer">
+         <li class="suggest-item"><span class="num">1</span><div class="body"><p>标题前三秒缺少悬念钩子，建议用"反差"或"数字"开头增加点击率。</p><span class="tag tag-title">标题</span></div></li>
+         <li class="suggest-item"><span class="num">2</span><div class="body"><p>情绪曲线在中间段趋于平缓，建议每 10-15 秒插入一个情绪波动点。</p><span class="tag tag-emotion">情绪</span></div></li>
+         <li class="suggest-item"><span class="num">3</span><div class="body"><p>卖点呈现顺序建议按"最痛点特征→解决方案→差异化优势"调整。</p><span class="tag tag-structure">结构</span></div></li>
+       </ul>
+     </div>
+ 
+     <div class="actions">
+       <button class="btn btn-primary" onclick="reAnalyze()">重新分析</button>
+       <button class="btn btn-outline">导出报告</button>
+     </div>
+ 
+     <div class="meta" id="resultMeta">
+       <span>&#128193; 字数 <span id="metaWordCount">0</span></span>
+       <span>&#128200; <span id="metaTrack">--</span></span>
+       <span>&#128337; <span id="metaDate">--</span></span>
+     </div>
+ 
+   </div>
+ 
+ </div>
+ 
+ <!-- 加载动画 -->
+ <div class="loading-overlay" id="loadingOverlay">
+   <div class="spinner"></div>
+   <p>AI 分析中，请稍候……</p>
+ </div>
+ 
+ <script>
+ let selectedTrack = '';
+ const trackNames = { xiaohongshu:'小红书种草', ecommerce:'电商商品', local_tourism:'本地文旅', short_video:'短视频脚本' };
+ const trackIcons = { xiaohongshu:'&#128247;', ecommerce:'&#128722;', local_tourism:'&#127963;', short_video:'&#127916;' };
+ const trackScores = { xiaohongshu:[[85,78,72,80,79],'B'], ecommerce:[[82,70,75,85,78],'B'], local_tourism:[[75,65,80,70,73],'B'], short_video:[[90,82,85,88,86],'S'] };
+ const dimLabels = ['标题','情绪','结构','人群','综合'];
+ 
+ // 赛道选择
+ document.querySelectorAll('.track-option').forEach(function(el) {
+   el.addEventListener('click', function() {
+     document.querySelectorAll('.track-option').forEach(function(e) { e.classList.remove('active'); });
+     this.classList.add('active');
+     selectedTrack = this.dataset.track;
+   });
+ });
+ 
+ // 字数统计
+ document.getElementById('txtInput').addEventListener('input', function() {
+   document.getElementById('charCount').textContent = this.value.length;
+ });
+ 
+ // 开始分析
+ function startAnalysis() {
+   var text = document.getElementById('txtInput').value.trim();
+   if (!text) { alert('请先输入文案内容'); return; }
+   if (!selectedTrack) { alert('请选择一个赛道'); return; }
+   if (text.length > 5000) { alert('文案超过 5000 字限制'); return; }
+ 
+   document.getElementById('loadingOverlay').classList.add('active');
+ 
+   setTimeout(function() {
+     document.getElementById('loadingOverlay').classList.remove('active');
+     showResults(text, selectedTrack);
+   }, 1500);
+ }
+ 
+ // 显示结果
+ function showResults(text, track) {
+   document.getElementById('resultTrack').innerHTML = trackIcons[track] + ' ' + trackNames[track];
+   document.getElementById('resultTime').textContent = '分析于 ' + new Date().toLocaleString('zh-CN');
+   document.getElementById('metaWordCount').textContent = text.length;
+   document.getElementById('metaTrack').textContent = trackNames[track];
+   document.getElementById('metaDate').textContent = new Date().toLocaleDateString('zh-CN');
+ 
+   var s = trackScores[track][0];
+   var grade = trackScores[track][1];
+   var overall = s[4];
+ 
+   document.getElementById('resultOverallScore').textContent = overall;
+   document.getElementById('resultGradeBadge').textContent = grade;
+   document.getElementById('resultGradeBadge').className = 'grade-badge ' + grade;
+ 
+   var descMap = { S:'爆款潜力强，高于 82% 的同赛道文案', A:'中等偏上，有优化空间', B:'待优化，建议参考优化建议修改', C:'低分文案，建议重写' };
+   document.getElementById('resultDesc').innerHTML = descMap[grade];
+ 
+   var html = '';
+   for (var i = 0; i < dimLabels.length; i++) {
+     var cls = s[i] >= 80 ? 'high' : s[i] >= 65 ? 'mid' : 'low';
+     html += '<div class="dim-row"><span class="dim-label">' + dimLabels[i] + '</span><div class="dim-bar-wrap"><div class="dim-bar-fill ' + cls + '" style="width:' + s[i] + '%;"></div></div><span class="dim-score">' + s[i] + '</span></div>';
+   }
+   document.getElementById('dimensionsContainer').innerHTML = html;
+ 
+   // 切换页面
+   switchPage('result');
+ }
+ 
+ // 重新分析
+ function reAnalyze() { switchPage('input'); }
+ function goBack() { switchPage('input'); }
+ 
+ function switchPage(page) {
+   document.getElementById('pageInput').classList.remove('active');
+   document.getElementById('pageResult').classList.remove('active');
+   if (page === 'input') {
+     document.getElementById('pageInput').classList.add('active');
+     document.getElementById('btnBack').style.visibility = 'hidden';
+     document.getElementById('btnSave').style.display = 'none';
+     document.getElementById('navTitle').textContent = '文案分析';
+   } else {
+     document.getElementById('pageResult').classList.add('active');
+     document.getElementById('btnBack').style.visibility = 'visible';
+     document.getElementById('btnSave').style.display = 'block';
+     document.getElementById('navTitle').textContent = '分析结果';
+   }
+ }
+ </script>
+ 
+ </body>
+ </html>
