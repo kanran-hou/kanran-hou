@@ -141,3 +141,27 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Project specific - resume junk
+resume_img-*
+resume_page_*
+resume_temp.*
+copymind_screenshot.png
+
+# Backend logs
+backend/logs/
+
+# Express analysis temp files
+express-analysis/__pycache__/
+express-analysis/*.pyc
+express-analysis/gen_html.py
+express-analysis/inspect_geo.py
+express-analysis/inspect_traffic.py

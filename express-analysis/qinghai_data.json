@@ -1,0 +1,1978 @@
+{
+  "cities": [
+    {
+      "city": "西宁市",
+      "total_points": 514,
+      "districts_count": 6,
+      "districts": [
+        {
+          "name": "大通回族土族自治县",
+          "count": 126
+        },
+        {
+          "name": "城北区",
+          "count": 124
+        },
+        {
+          "name": "湟中区",
+          "count": 94
+        },
+        {
+          "name": "城西区",
+          "count": 87
+        },
+        {
+          "name": "城中区",
+          "count": 55
+        },
+        {
+          "name": "湟源县",
+          "count": 28
+        }
+      ],
+      "district_densities": [
+        {
+          "name": "城西区",
+          "count": 87,
+          "density": 4.5509,
+          "area": 19.12
+        },
+        {
+          "name": "城中区",
+          "count": 55,
+          "density": 1.2514,
+          "area": 43.95
+        },
+        {
+          "name": "城北区",
+          "count": 124,
+          "density": 0.8099,
+          "area": 153.11
+        },
+        {
+          "name": "湟源县",
+          "count": 28,
+          "density": 0.1062,
+          "area": 263.56
+        },
+        {
+          "name": "大通回族土族自治县",
+          "count": 126,
+          "density": 0.0841,
+          "area": 1497.52
+        },
+        {
+          "name": "湟中区",
+          "count": 94,
+          "density": 0.0772,
+          "area": 1217.71
+        }
+      ],
+      "blind_spots": [],
+      "center": {
+        "lat": 36.7193,
+        "lng": 101.6414
+      },
+      "area_km2": 4084.58,
+      "density_per_km2": 0.1258,
+      "std_distance_km": 19.47,
+      "std_ellipse": {
+        "center": {
+          "lat": 36.7193,
+          "lng": 101.6414
+        },
+        "angle_deg": -84.42,
+        "x_std_km": 17.95,
+        "y_std_km": 20.08,
+        "area_km2": 1132.07
+      },
+      "avg_nnd_km": 0.416,
+      "kde": {
+        "high_density_cells": 4,
+        "low_density_cells": 375,
+        "high_density_ratio": 1.0,
+        "low_density_ratio": 93.8
+      },
+      "traffic_network_density": 0.171222719,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.029373501,
+      "traffic_advantage": 0.077887171
+    },
+    {
+      "city": "海东市",
+      "total_points": 414,
+      "districts_count": 6,
+      "districts": [
+        {
+          "name": "互助土族自治县",
+          "count": 108
+        },
+        {
+          "name": "民和回族土族自治县",
+          "count": 96
+        },
+        {
+          "name": "乐都区",
+          "count": 79
+        },
+        {
+          "name": "平安区",
+          "count": 56
+        },
+        {
+          "name": "化隆回族自治县",
+          "count": 50
+        },
+        {
+          "name": "循化撒拉族自治县",
+          "count": 25
+        }
+      ],
+      "district_densities": [
+        {
+          "name": "平安区",
+          "count": 56,
+          "density": 0.1215,
+          "area": 460.9
+        },
+        {
+          "name": "民和回族土族自治县",
+          "count": 96,
+          "density": 0.0546,
+          "area": 1757.03
+        },
+        {
+          "name": "乐都区",
+          "count": 79,
+          "density": 0.0393,
+          "area": 2011.36
+        },
+        {
+          "name": "互助土族自治县",
+          "count": 108,
+          "density": 0.0326,
+          "area": 3314.75
+        },
+        {
+          "name": "循化撒拉族自治县",
+          "count": 25,
+          "density": 0.0277,
+          "area": 903.03
+        },
+        {
+          "name": "化隆回族自治县",
+          "count": 50,
+          "density": 0.016,
+          "area": 3117.97
+        }
+      ],
+      "blind_spots": [],
+      "center": {
+        "lat": 36.408,
+        "lng": 102.3149
+      },
+      "area_km2": 15981.33,
+      "density_per_km2": 0.0259,
+      "std_distance_km": 45.09,
+      "std_ellipse": {
+        "center": {
+          "lat": 36.408,
+          "lng": 102.3149
+        },
+        "angle_deg": -40.38,
+        "x_std_km": 49.9,
+        "y_std_km": 34.53,
+        "area_km2": 5412.5
+      },
+      "avg_nnd_km": 1.131,
+      "kde": {
+        "high_density_cells": 3,
+        "low_density_cells": 385,
+        "high_density_ratio": 0.8,
+        "low_density_ratio": 96.2
+      },
+      "traffic_network_density": 0.199680333,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.003569769,
+      "traffic_advantage": 0.055178127
+    }
+  ],
+  "traffic_scores": {
+    "北京市": {
+      "traffic_network_density": 0.430708514,
+      "traffic_hub_influence": 1.0,
+      "location_advantage": 0.706095333,
+      "traffic_advantage": 0.761035137
+    },
+    "天津市": {
+      "traffic_network_density": 0.429656222,
+      "traffic_hub_influence": 0.678571429,
+      "location_advantage": 0.518752615,
+      "traffic_advantage": 0.555299467
+    },
+    "石家庄市": {
+      "traffic_network_density": 0.424830565,
+      "traffic_hub_influence": 0.357142857,
+      "location_advantage": 0.091184896,
+      "traffic_advantage": 0.205013728
+    },
+    "唐山市": {
+      "traffic_network_density": 0.423879331,
+      "traffic_hub_influence": 0.392857143,
+      "location_advantage": 0.097827441,
+      "traffic_advantage": 0.219251762
+    },
+    "秦皇岛市": {
+      "traffic_network_density": 0.357996867,
+      "traffic_hub_influence": 0.464285714,
+      "location_advantage": 0.025573798,
+      "traffic_advantage": 0.189366791
+    },
+    "邯郸市": {
+      "traffic_network_density": 0.412336201,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.034178568,
+      "traffic_advantage": 0.086578409
+    },
+    "邢台市": {
+      "traffic_network_density": 0.519523781,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.015771453,
+      "traffic_advantage": 0.087324774
+    },
+    "保定市": {
+      "traffic_network_density": 0.295967619,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.101819355,
+      "traffic_advantage": 0.135076622
+    },
+    "张家口市": {
+      "traffic_network_density": 0.175852285,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.030075878,
+      "traffic_advantage": 0.07881785
+    },
+    "承德市": {
+      "traffic_network_density": 0.180493221,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.027081943,
+      "traffic_advantage": 0.056817706
+    },
+    "沧州市": {
+      "traffic_network_density": 0.382460467,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.148613568,
+      "traffic_advantage": 0.183024507
+    },
+    "廊坊市": {
+      "traffic_network_density": 0.550842778,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.13175871,
+      "traffic_advantage": 0.17071936
+    },
+    "衡水市": {
+      "traffic_network_density": 0.42750175,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.011668564,
+      "traffic_advantage": 0.074740617
+    },
+    "太原市": {
+      "traffic_network_density": 0.343254333,
+      "traffic_hub_influence": 0.357142857,
+      "location_advantage": 0.048261242,
+      "traffic_advantage": 0.17028615
+    },
+    "大同市": {
+      "traffic_network_density": 0.280498267,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.01704667,
+      "traffic_advantage": 0.123939954
+    },
+    "阳泉市": {
+      "traffic_network_density": 0.395639935,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.005791668,
+      "traffic_advantage": 0.088423965
+    },
+    "长治市": {
+      "traffic_network_density": 0.270545938,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.025529487,
+      "traffic_advantage": 0.055434889
+    },
+    "晋城市": {
+      "traffic_network_density": 0.321382306,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.031628134,
+      "traffic_advantage": 0.064686077
+    },
+    "朔州市": {
+      "traffic_network_density": 0.303061596,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.002398542,
+      "traffic_advantage": 0.055490186
+    },
+    "晋中市": {
+      "traffic_network_density": 0.307397946,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.009450856,
+      "traffic_advantage": 0.080912859
+    },
+    "运城市": {
+      "traffic_network_density": 0.354628389,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.027081943,
+      "traffic_advantage": 0.086329717
+    },
+    "忻州市": {
+      "traffic_network_density": 0.213812673,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.016436706,
+      "traffic_advantage": 0.054095703
+    },
+    "临汾市": {
+      "traffic_network_density": 0.295562356,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.028412448,
+      "traffic_advantage": 0.070273614
+    },
+    "吕梁市": {
+      "traffic_network_density": 0.254971364,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.018876364,
+      "traffic_advantage": 0.049729811
+    },
+    "呼和浩特市": {
+      "traffic_network_density": 0.133552381,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.026172585,
+      "traffic_advantage": 0.09253717
+    },
+    "包头市": {
+      "traffic_network_density": 0.095531628,
+      "traffic_hub_influence": 0.321428571,
+      "location_advantage": 0.030075878,
+      "traffic_advantage": 0.121768292
+    },
+    "乌海市": {
+      "traffic_network_density": 0.213163113,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.004017462,
+      "traffic_advantage": 0.036215563
+    },
+    "赤峰市": {
+      "traffic_network_density": 0.084769165,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.011291727,
+      "traffic_advantage": 0.026456788
+    },
+    "通辽市": {
+      "traffic_network_density": 0.107255586,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.00479369,
+      "traffic_advantage": 0.035388614
+    },
+    "鄂尔多斯市": {
+      "traffic_network_density": 0.076180079,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.044934581,
+      "traffic_advantage": 0.076769128
+    },
+    "呼伦贝尔市": {
+      "traffic_network_density": 0.022589171,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.000801776,
+      "traffic_advantage": 0.065108731
+    },
+    "巴彦淖尔市": {
+      "traffic_network_density": 0.099622845,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.007011398,
+      "traffic_advantage": 0.025522494
+    },
+    "乌兰察布市": {
+      "traffic_network_density": 0.088387431,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.008009376,
+      "traffic_advantage": 0.035242529
+    },
+    "沈阳市": {
+      "traffic_network_density": 0.30513249,
+      "traffic_hub_influence": 0.571428571,
+      "location_advantage": 0.054359889,
+      "traffic_advantage": 0.231894793
+    },
+    "大连市": {
+      "traffic_network_density": 0.310374132,
+      "traffic_hub_influence": 0.464285714,
+      "location_advantage": 0.075095686,
+      "traffic_advantage": 0.213841423
+    },
+    "鞍山市": {
+      "traffic_network_density": 0.242331635,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.007344124,
+      "traffic_advantage": 0.041420097
+    },
+    "抚顺市": {
+      "traffic_network_density": 0.186472021,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.002332076,
+      "traffic_advantage": 0.032268311
+    },
+    "本溪市": {
+      "traffic_network_density": 0.151443977,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.002598137,
+      "traffic_advantage": 0.028574863
+    },
+    "丹东市": {
+      "traffic_network_density": 0.195612061,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.002221101,
+      "traffic_advantage": 0.074635702
+    },
+    "锦州市": {
+      "traffic_network_density": 0.230684885,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.007454899,
+      "traffic_advantage": 0.081633991
+    },
+    "营口市": {
+      "traffic_network_density": 0.255311092,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.005946954,
+      "traffic_advantage": 0.083438107
+    },
+    "阜新市": {
+      "traffic_network_density": 0.223317485,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.003130459,
+      "traffic_advantage": 0.047157484
+    },
+    "辽阳市": {
+      "traffic_network_density": 0.261315071,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.003019484,
+      "traffic_advantage": 0.051270634
+    },
+    "盘锦市": {
+      "traffic_network_density": 0.271500792,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.006346145,
+      "traffic_advantage": 0.075101346
+    },
+    "铁岭市": {
+      "traffic_network_density": 0.267885859,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.002664603,
+      "traffic_advantage": 0.051780492
+    },
+    "朝阳市": {
+      "traffic_network_density": 0.232153977,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.008231127,
+      "traffic_advantage": 0.051189899
+    },
+    "葫芦岛市": {
+      "traffic_network_density": 0.291271052,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.00623517,
+      "traffic_advantage": 0.087566632
+    },
+    "长春市": {
+      "traffic_network_density": 0.373304079,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.041607919,
+      "traffic_advantage": 0.148885343
+    },
+    "吉林市": {
+      "traffic_network_density": 0.167808577,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.004128437,
+      "traffic_advantage": 0.031293149
+    },
+    "四平市": {
+      "traffic_network_density": 0.155229917,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.001733289,
+      "traffic_advantage": 0.059543836
+    },
+    "辽源市": {
+      "traffic_network_density": 0.303094337,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.000790599,
+      "traffic_advantage": 0.044171879
+    },
+    "通化市": {
+      "traffic_network_density": 0.146750022,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.004194903,
+      "traffic_advantage": 0.03937373
+    },
+    "白山市": {
+      "traffic_network_density": 0.115370995,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.002819888,
+      "traffic_advantage": 0.035097028
+    },
+    "松原市": {
+      "traffic_network_density": 0.193982537,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.005946954,
+      "traffic_advantage": 0.035263394
+    },
+    "白城市": {
+      "traffic_network_density": 0.144095744,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.003895509,
+      "traffic_advantage": 0.038902123
+    },
+    "哈尔滨市": {
+      "traffic_network_density": 0.14444608,
+      "traffic_hub_influence": 0.607142857,
+      "location_advantage": 0.008408568,
+      "traffic_advantage": 0.197005638
+    },
+    "齐齐哈尔市": {
+      "traffic_network_density": 0.175454502,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.001566826,
+      "traffic_advantage": 0.103097234
+    },
+    "鸡西市": {
+      "traffic_network_density": 0.122132805,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.000236321,
+      "traffic_advantage": 0.034290687
+    },
+    "鹤岗市": {
+      "traffic_network_density": 0.121341254,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 8.10359e-05,
+      "traffic_advantage": 0.023753302
+    },
+    "双鸭山市": {
+      "traffic_network_density": 0.117295167,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.000169656,
+      "traffic_advantage": 0.033718548
+    },
+    "大庆市": {
+      "traffic_network_density": 0.123647799,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.003108304,
+      "traffic_advantage": 0.077609097
+    },
+    "伊春市": {
+      "traffic_network_density": 0.058353873,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 7.54472e-05,
+      "traffic_advantage": 0.02717848
+    },
+    "佳木斯市": {
+      "traffic_network_density": 0.144970395,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.000435917,
+      "traffic_advantage": 0.057636865
+    },
+    "七台河市": {
+      "traffic_network_density": 0.121107162,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.0,
+      "traffic_advantage": 0.034036074
+    },
+    "牡丹江市": {
+      "traffic_network_density": 0.092490317,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.00064649,
+      "traffic_advantage": 0.051990401
+    },
+    "黑河市": {
+      "traffic_network_density": 0.062191168,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.000191811,
+      "traffic_advantage": 0.017313258
+    },
+    "绥化市": {
+      "traffic_network_density": 0.201132694,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.001200967,
+      "traffic_advantage": 0.043559463
+    },
+    "上海市": {
+      "traffic_network_density": 0.595260498,
+      "traffic_hub_influence": 0.892857143,
+      "location_advantage": 0.872480503,
+      "traffic_advantage": 0.847895528
+    },
+    "南京市": {
+      "traffic_network_density": 0.49253131,
+      "traffic_hub_influence": 0.785714286,
+      "location_advantage": 0.096607711,
+      "traffic_advantage": 0.340000214
+    },
+    "无锡市": {
+      "traffic_network_density": 0.523853235,
+      "traffic_hub_influence": 0.357142857,
+      "location_advantage": 0.170901622,
+      "traffic_advantage": 0.263736257
+    },
+    "徐州市": {
+      "traffic_network_density": 0.453842792,
+      "traffic_hub_influence": 0.642857143,
+      "location_advantage": 0.025640263,
+      "traffic_advantage": 0.251735436
+    },
+    "常州市": {
+      "traffic_network_density": 0.658235913,
+      "traffic_hub_influence": 0.392857143,
+      "location_advantage": 0.074541209,
+      "traffic_advantage": 0.231059247
+    },
+    "苏州市": {
+      "traffic_network_density": 0.43341347,
+      "traffic_hub_influence": 0.357142857,
+      "location_advantage": 0.546917763,
+      "traffic_advantage": 0.479397568
+    },
+    "南通市": {
+      "traffic_network_density": 0.584240234,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.066224855,
+      "traffic_advantage": 0.176501339
+    },
+    "连云港市": {
+      "traffic_network_density": 0.507045341,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.010005333,
+      "traffic_advantage": 0.123921045
+    },
+    "淮安市": {
+      "traffic_network_density": 0.427378329,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.014218998,
+      "traffic_advantage": 0.117685872
+    },
+    "盐城市": {
+      "traffic_network_density": 0.383541028,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.028190697,
+      "traffic_advantage": 0.100532503
+    },
+    "扬州市": {
+      "traffic_network_density": 0.469722282,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.033069814,
+      "traffic_advantage": 0.133654196
+    },
+    "镇江市": {
+      "traffic_network_density": 0.611191373,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.029299651,
+      "traffic_advantage": 0.146953699
+    },
+    "泰州市": {
+      "traffic_network_density": 0.557511903,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.030075878,
+      "traffic_advantage": 0.120800408
+    },
+    "宿迁市": {
+      "traffic_network_density": 0.449885181,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.012666543,
+      "traffic_advantage": 0.088158724
+    },
+    "杭州市": {
+      "traffic_network_density": 0.31989924,
+      "traffic_hub_influence": 0.642857143,
+      "location_advantage": 0.149500572,
+      "traffic_advantage": 0.311317831
+    },
+    "宁波市": {
+      "traffic_network_density": 0.367613104,
+      "traffic_hub_influence": 0.357142857,
+      "location_advantage": 0.07332148,
+      "traffic_advantage": 0.188001758
+    },
+    "温州市": {
+      "traffic_network_density": 0.395067254,
+      "traffic_hub_influence": 0.428571429,
+      "location_advantage": 0.020206869,
+      "traffic_advantage": 0.179867234
+    },
+    "嘉兴市": {
+      "traffic_network_density": 0.679301583,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.080196554,
+      "traffic_advantage": 0.164269678
+    },
+    "湖州市": {
+      "traffic_network_density": 0.440178436,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.039279436,
+      "traffic_advantage": 0.123773004
+    },
+    "绍兴市": {
+      "traffic_network_density": 0.39057651,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.058351803,
+      "traffic_advantage": 0.129760212
+    },
+    "金华市": {
+      "traffic_network_density": 0.381273605,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.023422555,
+      "traffic_advantage": 0.107779344
+    },
+    "衢州市": {
+      "traffic_network_density": 0.306677162,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.070771246,
+      "traffic_advantage": 0.086554378
+    },
+    "舟山市": {
+      "traffic_network_density": 0.415521442,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.005680693,
+      "traffic_advantage": 0.090544346
+    },
+    "台州市": {
+      "traffic_network_density": 0.442645828,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.020539595,
+      "traffic_advantage": 0.112800512
+    },
+    "丽水市": {
+      "traffic_network_density": 0.285140399,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.004460964,
+      "traffic_advantage": 0.085827736
+    },
+    "合肥市": {
+      "traffic_network_density": 0.531340269,
+      "traffic_hub_influence": 0.535714286,
+      "location_advantage": 0.107807226,
+      "traffic_advantage": 0.278488908
+    },
+    "芜湖市": {
+      "traffic_network_density": 0.580095088,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.02353353,
+      "traffic_advantage": 0.150430578
+    },
+    "蚌埠市": {
+      "traffic_network_density": 0.507746154,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.012666543,
+      "traffic_advantage": 0.12559486
+    },
+    "淮南市": {
+      "traffic_network_density": 1.0,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.009783582,
+      "traffic_advantage": 0.146941578
+    },
+    "马鞍山市": {
+      "traffic_network_density": 0.57984847,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.013110244,
+      "traffic_advantage": 0.113078049
+    },
+    "淮北市": {
+      "traffic_network_density": 0.511904096,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.004904665,
+      "traffic_advantage": 0.069609393
+    },
+    "铜陵市": {
+      "traffic_network_density": 0.676953256,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.005902644,
+      "traffic_advantage": 0.119435016
+    },
+    "安庆市": {
+      "traffic_network_density": 0.42970671,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.019763367,
+      "traffic_advantage": 0.090197187
+    },
+    "黄山市": {
+      "traffic_network_density": 0.234923975,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.005015441,
+      "traffic_advantage": 0.070279473
+    },
+    "滁州市": {
+      "traffic_network_density": 0.432825369,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.027303694,
+      "traffic_advantage": 0.115778721
+    },
+    "阜阳市": {
+      "traffic_network_density": 0.59074212,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.028856149,
+      "traffic_advantage": 0.134081037
+    },
+    "宿州市": {
+      "traffic_network_density": 0.61906125,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.01322102,
+      "traffic_advantage": 0.107100778
+    },
+    "六安市": {
+      "traffic_network_density": 0.422148317,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.018765389,
+      "traffic_advantage": 0.088766977
+    },
+    "亳州市": {
+      "traffic_network_density": 0.615570263,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.020096093,
+      "traffic_advantage": 0.110841814
+    },
+    "池州市": {
+      "traffic_network_density": 0.353778963,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.006456921,
+      "traffic_advantage": 0.08421841
+    },
+    "宣城市": {
+      "traffic_network_density": 0.321722325,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.008342102,
+      "traffic_advantage": 0.05075186
+    },
+    "福州市": {
+      "traffic_network_density": 0.303792568,
+      "traffic_hub_influence": 0.392857143,
+      "location_advantage": 0.108916179,
+      "traffic_advantage": 0.212695461
+    },
+    "厦门市": {
+      "traffic_network_density": 0.406862603,
+      "traffic_hub_influence": 0.321428571,
+      "location_advantage": 0.067999061,
+      "traffic_advantage": 0.178768609
+    },
+    "莆田市": {
+      "traffic_network_density": 0.506105027,
+      "traffic_hub_influence": 0.321428571,
+      "location_advantage": 0.012444792,
+      "traffic_advantage": 0.156352714
+    },
+    "三明市": {
+      "traffic_network_density": 0.20523365,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.026638242,
+      "traffic_advantage": 0.048915789
+    },
+    "泉州市": {
+      "traffic_network_density": 0.513966755,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.108250727,
+      "traffic_advantage": 0.183629637
+    },
+    "漳州市": {
+      "traffic_network_density": 0.306369286,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.031073857,
+      "traffic_advantage": 0.10413065
+    },
+    "南平市": {
+      "traffic_network_density": 0.185394034,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.009783582,
+      "traffic_advantage": 0.046977779
+    },
+    "龙岩市": {
+      "traffic_network_density": 0.239245753,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.011779539,
+      "traffic_advantage": 0.043741899
+    },
+    "宁德市": {
+      "traffic_network_density": 0.283919592,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.011114287,
+      "traffic_advantage": 0.079328299
+    },
+    "南昌市": {
+      "traffic_network_density": 0.484588644,
+      "traffic_hub_influence": 0.392857143,
+      "location_advantage": 0.062121966,
+      "traffic_advantage": 0.204506502
+    },
+    "景德镇市": {
+      "traffic_network_density": 0.283667086,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.014218998,
+      "traffic_advantage": 0.050091921
+    },
+    "萍乡市": {
+      "traffic_network_density": 0.593159289,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.008674629,
+      "traffic_advantage": 0.091166585
+    },
+    "九江市": {
+      "traffic_network_density": 0.320951302,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.029521401,
+      "traffic_advantage": 0.104803198
+    },
+    "新余市": {
+      "traffic_network_density": 0.444825923,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.008896579,
+      "traffic_advantage": 0.074983085
+    },
+    "鹰潭市": {
+      "traffic_network_density": 0.370185442,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.009450856,
+      "traffic_advantage": 0.10853377
+    },
+    "赣州市": {
+      "traffic_network_density": 0.243806003,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.01754566,
+      "traffic_advantage": 0.058060342
+    },
+    "吉安市": {
+      "traffic_network_density": 0.283282973,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.010892536,
+      "traffic_advantage": 0.048053792
+    },
+    "宜春市": {
+      "traffic_network_density": 0.335020112,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.016658457,
+      "traffic_advantage": 0.057204429
+    },
+    "抚州市": {
+      "traffic_network_density": 0.246020142,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.010227084,
+      "traffic_advantage": 0.043555609
+    },
+    "上饶市": {
+      "traffic_network_density": 0.28860601,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.016547681,
+      "traffic_advantage": 0.062389555
+    },
+    "济南市": {
+      "traffic_network_density": 0.714766098,
+      "traffic_hub_influence": 0.357142857,
+      "location_advantage": 0.352422932,
+      "traffic_advantage": 0.393649459
+    },
+    "青岛市": {
+      "traffic_network_density": 0.412582047,
+      "traffic_hub_influence": 0.5,
+      "location_advantage": 0.234883221,
+      "traffic_advantage": 0.331313958
+    },
+    "淄博市": {
+      "traffic_network_density": 0.612477678,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.066335631,
+      "traffic_advantage": 0.127888209
+    },
+    "枣庄市": {
+      "traffic_network_density": 0.627307394,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.031739109,
+      "traffic_advantage": 0.12947585
+    },
+    "东营市": {
+      "traffic_network_density": 0.354811994,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.109581432,
+      "traffic_advantage": 0.14620675
+    },
+    "烟台市": {
+      "traffic_network_density": 0.451719891,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.199399496,
+      "traffic_advantage": 0.241828886
+    },
+    "潍坊市": {
+      "traffic_network_density": 0.572386683,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.090730816,
+      "traffic_advantage": 0.179543882
+    },
+    "济宁市": {
+      "traffic_network_density": 0.581902499,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.101819355,
+      "traffic_advantage": 0.197600888
+    },
+    "泰安市": {
+      "traffic_network_density": 0.660955186,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.06899704,
+      "traffic_advantage": 0.124460437
+    },
+    "威海市": {
+      "traffic_network_density": 0.392043731,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.058573553,
+      "traffic_advantage": 0.1404118
+    },
+    "日照市": {
+      "traffic_network_density": 0.573696594,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.025085986,
+      "traffic_advantage": 0.129943931
+    },
+    "临沂市": {
+      "traffic_network_density": 0.549630723,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.049924473,
+      "traffic_advantage": 0.111128349
+    },
+    "德州市": {
+      "traffic_network_density": 0.68245633,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.145065156,
+      "traffic_advantage": 0.182823576
+    },
+    "聊城市": {
+      "traffic_network_density": 0.738601295,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.064117923,
+      "traffic_advantage": 0.140431182
+    },
+    "滨州市": {
+      "traffic_network_density": 0.564113153,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.045045556,
+      "traffic_advantage": 0.130508352
+    },
+    "菏泽市": {
+      "traffic_network_density": 0.714007119,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.143956202,
+      "traffic_advantage": 0.18562879
+    },
+    "郑州市": {
+      "traffic_network_density": 0.594923165,
+      "traffic_hub_influence": 0.535714286,
+      "location_advantage": 0.387906457,
+      "traffic_advantage": 0.453542565
+    },
+    "开封市": {
+      "traffic_network_density": 0.469852169,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.222685728,
+      "traffic_advantage": 0.226723747
+    },
+    "洛阳市": {
+      "traffic_network_density": 0.410928295,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.376817918,
+      "traffic_advantage": 0.323078577
+    },
+    "平顶山市": {
+      "traffic_network_density": 0.600146017,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.156153695,
+      "traffic_advantage": 0.180422565
+    },
+    "安阳市": {
+      "traffic_network_density": 0.565513129,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.114016847,
+      "traffic_advantage": 0.151330838
+    },
+    "鹤壁市": {
+      "traffic_network_density": 0.674700113,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.064117923,
+      "traffic_advantage": 0.123044909
+    },
+    "新乡市": {
+      "traffic_network_density": 0.498200252,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.312503792,
+      "traffic_advantage": 0.263018589
+    },
+    "焦作市": {
+      "traffic_network_density": 0.63906859,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.143956202,
+      "traffic_advantage": 0.177385552
+    },
+    "濮阳市": {
+      "traffic_network_density": 0.532352168,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.063674421,
+      "traffic_advantage": 0.107120534
+    },
+    "许昌市": {
+      "traffic_network_density": 0.64353474,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.398995195,
+      "traffic_advantage": 0.35161451
+    },
+    "漯河市": {
+      "traffic_network_density": 0.647503148,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.065670378,
+      "traffic_advantage": 0.131341859
+    },
+    "三门峡市": {
+      "traffic_network_density": 0.302182328,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.050811676,
+      "traffic_advantage": 0.074084204
+    },
+    "南阳市": {
+      "traffic_network_density": 0.482475382,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.14617391,
+      "traffic_advantage": 0.171848067
+    },
+    "商丘市": {
+      "traffic_network_density": 0.748530661,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.120670171,
+      "traffic_advantage": 0.175454761
+    },
+    "信阳市": {
+      "traffic_network_density": 0.453989267,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.092948523,
+      "traffic_advantage": 0.126422219
+    },
+    "周口市": {
+      "traffic_network_density": 0.645076562,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.14617391,
+      "traffic_advantage": 0.200091339
+    },
+    "驻马店市": {
+      "traffic_network_density": 0.459074191,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.139520787,
+      "traffic_advantage": 0.154924919
+    },
+    "武汉市": {
+      "traffic_network_density": 0.541582837,
+      "traffic_hub_influence": 0.928571429,
+      "location_advantage": 0.567542586,
+      "traffic_advantage": 0.669385378
+    },
+    "黄石市": {
+      "traffic_network_density": 0.511613115,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.063009169,
+      "traffic_advantage": 0.135511515
+    },
+    "十堰市": {
+      "traffic_network_density": 0.398090681,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.021981075,
+      "traffic_advantage": 0.077692906
+    },
+    "宜昌市": {
+      "traffic_network_density": 0.412054131,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.056355846,
+      "traffic_advantage": 0.161996605
+    },
+    "襄阳市": {
+      "traffic_network_density": 0.488080126,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.087404154,
+      "traffic_advantage": 0.178631306
+    },
+    "鄂州市": {
+      "traffic_network_density": 0.698751259,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.060791461,
+      "traffic_advantage": 0.165123229
+    },
+    "荆门市": {
+      "traffic_network_density": 0.380037282,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.010892536,
+      "traffic_advantage": 0.058696765
+    },
+    "孝感市": {
+      "traffic_network_density": 0.63754287,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.12621434,
+      "traffic_advantage": 0.156215463
+    },
+    "荆州市": {
+      "traffic_network_density": 0.45331844,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.048593768,
+      "traffic_advantage": 0.130807004
+    },
+    "黄冈市": {
+      "traffic_network_density": 0.573908851,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.132867663,
+      "traffic_advantage": 0.163564857
+    },
+    "咸宁市": {
+      "traffic_network_density": 0.459261829,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.078533123,
+      "traffic_advantage": 0.107995818
+    },
+    "随州市": {
+      "traffic_network_density": 0.248826412,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.031406383,
+      "traffic_advantage": 0.056571878
+    },
+    "长沙市": {
+      "traffic_network_density": 0.436429647,
+      "traffic_hub_influence": 0.5,
+      "location_advantage": 0.209379281,
+      "traffic_advantage": 0.31863483
+    },
+    "株洲市": {
+      "traffic_network_density": 0.39024359,
+      "traffic_hub_influence": 0.321428571,
+      "location_advantage": 0.044158353,
+      "traffic_advantage": 0.162636092
+    },
+    "湘潭市": {
+      "traffic_network_density": 0.506026984,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.028079921,
+      "traffic_advantage": 0.10358235
+    },
+    "衡阳市": {
+      "traffic_network_density": 0.438827362,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.048593768,
+      "traffic_advantage": 0.160284414
+    },
+    "邵阳市": {
+      "traffic_network_density": 0.341175539,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.023755281,
+      "traffic_advantage": 0.062139621
+    },
+    "岳阳市": {
+      "traffic_network_density": 0.44138722,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.102928308,
+      "traffic_advantage": 0.162095294
+    },
+    "常德市": {
+      "traffic_network_density": 0.378472828,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.049702722,
+      "traffic_advantage": 0.102525073
+    },
+    "张家界市": {
+      "traffic_network_density": 0.29766862,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.009783582,
+      "traffic_advantage": 0.04897084
+    },
+    "益阳市": {
+      "traffic_network_density": 0.419246572,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.014773475,
+      "traffic_advantage": 0.065338351
+    },
+    "郴州市": {
+      "traffic_network_density": 0.285722259,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.053029384,
+      "traffic_advantage": 0.083961364
+    },
+    "永州市": {
+      "traffic_network_density": 0.325885152,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.01776741,
+      "traffic_advantage": 0.067222099
+    },
+    "怀化市": {
+      "traffic_network_density": 0.231423952,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.019763367,
+      "traffic_advantage": 0.078743227
+    },
+    "娄底市": {
+      "traffic_network_density": 0.595863909,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.020096093,
+      "traffic_advantage": 0.119031257
+    },
+    "广州市": {
+      "traffic_network_density": 0.382635807,
+      "traffic_hub_influence": 0.642857143,
+      "location_advantage": 0.649598773,
+      "traffic_advantage": 0.618277774
+    },
+    "韶关市": {
+      "traffic_network_density": 0.290108134,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.039279436,
+      "traffic_advantage": 0.086550985
+    },
+    "深圳市": {
+      "traffic_network_density": 0.071757594,
+      "traffic_hub_influence": 0.571428571,
+      "location_advantage": 1.0,
+      "traffic_advantage": 0.773607621
+    },
+    "珠海市": {
+      "traffic_network_density": 0.264320649,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.067888086,
+      "traffic_advantage": 0.142308123
+    },
+    "汕头市": {
+      "traffic_network_density": 0.570622552,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.03772698,
+      "traffic_advantage": 0.137190383
+    },
+    "佛山市": {
+      "traffic_network_density": 0.444135462,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.631856911,
+      "traffic_advantage": 0.490111904
+    },
+    "江门市": {
+      "traffic_network_density": 0.322559778,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.135085371,
+      "traffic_advantage": 0.137247084
+    },
+    "湛江市": {
+      "traffic_network_density": 0.538481034,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.052363932,
+      "traffic_advantage": 0.163151273
+    },
+    "茂名市": {
+      "traffic_network_density": 0.52816859,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.030186654,
+      "traffic_advantage": 0.107281966
+    },
+    "肇庆市": {
+      "traffic_network_density": 0.300598134,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.080085579,
+      "traffic_advantage": 0.122545713
+    },
+    "惠州市": {
+      "traffic_network_density": 0.367628233,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.461091613,
+      "traffic_advantage": 0.337808359
+    },
+    "梅州市": {
+      "traffic_network_density": 0.39320574,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.01776741,
+      "traffic_advantage": 0.053913078
+    },
+    "汕尾市": {
+      "traffic_network_density": 0.359262217,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.025751238,
+      "traffic_advantage": 0.096398158
+    },
+    "河源市": {
+      "traffic_network_density": 0.332545617,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.023755281,
+      "traffic_advantage": 0.071547472
+    },
+    "阳江市": {
+      "traffic_network_density": 0.417815892,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.01754566,
+      "traffic_advantage": 0.066844287
+    },
+    "清远市": {
+      "traffic_network_density": 0.387736407,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.153935987,
+      "traffic_advantage": 0.166084026
+    },
+    "东莞市": {
+      "traffic_network_density": 0.690463399,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.571978201,
+      "traffic_advantage": 0.43985218
+    },
+    "中山市": {
+      "traffic_network_density": 0.47671351,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.189419711,
+      "traffic_advantage": 0.186804599
+    },
+    "潮州市": {
+      "traffic_network_density": 0.536131698,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.016769432,
+      "traffic_advantage": 0.110464717
+    },
+    "揭阳市": {
+      "traffic_network_density": 0.44470371,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.024420534,
+      "traffic_advantage": 0.1049983
+    },
+    "云浮市": {
+      "traffic_network_density": 0.358952033,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.02042862,
+      "traffic_advantage": 0.082813324
+    },
+    "南宁市": {
+      "traffic_network_density": 0.17931895,
+      "traffic_hub_influence": 0.464285714,
+      "location_advantage": 0.056355846,
+      "traffic_advantage": 0.188181449
+    },
+    "柳州市": {
+      "traffic_network_density": 0.145210719,
+      "traffic_hub_influence": 0.392857143,
+      "location_advantage": 0.015106201,
+      "traffic_advantage": 0.138965471
+    },
+    "桂林市": {
+      "traffic_network_density": 0.157292849,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.019319866,
+      "traffic_advantage": 0.09103699
+    },
+    "梧州市": {
+      "traffic_network_density": 0.16971625,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.016104179,
+      "traffic_advantage": 0.059402724
+    },
+    "北海市": {
+      "traffic_network_density": 0.278179992,
+      "traffic_hub_influence": 0.214285714,
+      "location_advantage": 0.017102158,
+      "traffic_advantage": 0.103003951
+    },
+    "防城港市": {
+      "traffic_network_density": 0.153790789,
+      "traffic_hub_influence": 0.25,
+      "location_advantage": 0.003130459,
+      "traffic_advantage": 0.091295262
+    },
+    "钦州市": {
+      "traffic_network_density": 0.183175186,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.006678672,
+      "traffic_advantage": 0.055227902
+    },
+    "贵港市": {
+      "traffic_network_density": 0.244684376,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.011446813,
+      "traffic_advantage": 0.085569084
+    },
+    "玉林市": {
+      "traffic_network_density": 0.241767659,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.008674629,
+      "traffic_advantage": 0.052513505
+    },
+    "百色市": {
+      "traffic_network_density": 0.15018247,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.005791668,
+      "traffic_advantage": 0.030352216
+    },
+    "贺州市": {
+      "traffic_network_density": 0.129660092,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.012444792,
+      "traffic_advantage": 0.042443771
+    },
+    "河池市": {
+      "traffic_network_density": 0.119299021,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.004017462,
+      "traffic_advantage": 0.01553337
+    },
+    "来宾市": {
+      "traffic_network_density": 0.164069084,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.005126416,
+      "traffic_advantage": 0.052194877
+    },
+    "崇左市": {
+      "traffic_network_density": 0.125178114,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.003462985,
+      "traffic_advantage": 0.026204527
+    },
+    "海口市": {
+      "traffic_network_density": 0.42795779,
+      "traffic_hub_influence": 0.321428571,
+      "location_advantage": 0.029964903,
+      "traffic_advantage": 0.158268584
+    },
+    "三亚市": {
+      "traffic_network_density": 0.216069881,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.008120351,
+      "traffic_advantage": 0.080425612
+    },
+    "儋州市": {
+      "traffic_network_density": 0.178595935,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.002465007,
+      "traffic_advantage": 0.052195986
+    },
+    "重庆市": {
+      "traffic_network_density": 0.679907079,
+      "traffic_hub_influence": 0.714285714,
+      "location_advantage": 0.647380865,
+      "traffic_advantage": 0.670361155
+    },
+    "成都市": {
+      "traffic_network_density": 0.750716012,
+      "traffic_hub_influence": 0.571428571,
+      "location_advantage": 0.56310717,
+      "traffic_advantage": 0.586157349
+    },
+    "自贡市": {
+      "traffic_network_density": 0.481260451,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.028634199,
+      "traffic_advantage": 0.080476312
+    },
+    "攀枝花市": {
+      "traffic_network_density": 0.199901921,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.015438727,
+      "traffic_advantage": 0.062323876
+    },
+    "泸州市": {
+      "traffic_network_density": 0.387051134,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.104037063,
+      "traffic_advantage": 0.125712148
+    },
+    "德阳市": {
+      "traffic_network_density": 0.465733803,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.123996632,
+      "traffic_advantage": 0.135985841
+    },
+    "绵阳市": {
+      "traffic_network_density": 0.312629222,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.105146016,
+      "traffic_advantage": 0.149262538
+    },
+    "广元市": {
+      "traffic_network_density": 0.38838363,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.015438727,
+      "traffic_advantage": 0.093414007
+    },
+    "遂宁市": {
+      "traffic_network_density": 0.547097214,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.030852106,
+      "traffic_advantage": 0.0890491
+    },
+    "内江市": {
+      "traffic_network_density": 0.761503338,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.058573553,
+      "traffic_advantage": 0.139623785
+    },
+    "乐山市": {
+      "traffic_network_density": 0.31265661,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.053029384,
+      "traffic_advantage": 0.086924143
+    },
+    "南充市": {
+      "traffic_network_density": 0.591812034,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.035287522,
+      "traffic_advantage": 0.09662898
+    },
+    "眉山市": {
+      "traffic_network_density": 0.349413932,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.070771246,
+      "traffic_advantage": 0.08089828
+    },
+    "宜宾市": {
+      "traffic_network_density": 0.485242408,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.074097708,
+      "traffic_advantage": 0.118549575
+    },
+    "广安市": {
+      "traffic_network_density": 0.70845897,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.020872321,
+      "traffic_advantage": 0.100811022
+    },
+    "达州市": {
+      "traffic_network_density": 0.386888949,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.039279436,
+      "traffic_advantage": 0.086839731
+    },
+    "雅安市": {
+      "traffic_network_density": 0.132474495,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.018100136,
+      "traffic_advantage": 0.025432276
+    },
+    "巴中市": {
+      "traffic_network_density": 0.479318014,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.013553746,
+      "traffic_advantage": 0.060857229
+    },
+    "资阳市": {
+      "traffic_network_density": 0.496093814,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.018100136,
+      "traffic_advantage": 0.065430401
+    },
+    "贵阳市": {
+      "traffic_network_density": 0.404147374,
+      "traffic_hub_influence": 0.428571429,
+      "location_advantage": 0.068553338,
+      "traffic_advantage": 0.209873928
+    },
+    "六盘水市": {
+      "traffic_network_density": 0.47054533,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.007787625,
+      "traffic_advantage": 0.097861133
+    },
+    "遵义市": {
+      "traffic_network_density": 0.406060151,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.019430641,
+      "traffic_advantage": 0.077039287
+    },
+    "安顺市": {
+      "traffic_network_density": 0.478107462,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.005680693,
+      "traffic_advantage": 0.06635738
+    },
+    "毕节市": {
+      "traffic_network_density": 0.389815798,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.011003312,
+      "traffic_advantage": 0.049481725
+    },
+    "铜仁市": {
+      "traffic_network_density": 0.46030763,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.006789647,
+      "traffic_advantage": 0.075421913
+    },
+    "昆明市": {
+      "traffic_network_density": 0.348236907,
+      "traffic_hub_influence": 0.464285714,
+      "location_advantage": 0.039390211,
+      "traffic_advantage": 0.196583044
+    },
+    "曲靖市": {
+      "traffic_network_density": 0.281645465,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.018210912,
+      "traffic_advantage": 0.062621834
+    },
+    "玉溪市": {
+      "traffic_network_density": 0.358291897,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.013997247,
+      "traffic_advantage": 0.0581676
+    },
+    "保山市": {
+      "traffic_network_density": 0.226357917,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.005348167,
+      "traffic_advantage": 0.028108271
+    },
+    "昭通市": {
+      "traffic_network_density": 0.294490063,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.007732138,
+      "traffic_advantage": 0.047390332
+    },
+    "丽江市": {
+      "traffic_network_density": 0.120631339,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.002065815,
+      "traffic_advantage": 0.035223222
+    },
+    "普洱市": {
+      "traffic_network_density": 0.159406318,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.003130459,
+      "traffic_advantage": 0.029770113
+    },
+    "临沧市": {
+      "traffic_network_density": 0.240784155,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.003840022,
+      "traffic_advantage": 0.039147413
+    },
+    "拉萨市": {
+      "traffic_network_density": 0.030903113,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.000347097,
+      "traffic_advantage": 0.045036172
+    },
+    "日喀则市": {
+      "traffic_network_density": 0.012188889,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.003518473,
+      "traffic_advantage": 0.013809004
+    },
+    "昌都市": {
+      "traffic_network_density": 0.026738578,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.00118979,
+      "traffic_advantage": 0.003655118
+    },
+    "林芝市": {
+      "traffic_network_density": 0.0,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.000663257,
+      "traffic_advantage": 0.02111224
+    },
+    "山南市": {
+      "traffic_network_density": 0.012952673,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.000149697,
+      "traffic_advantage": 0.011871755
+    },
+    "那曲市": {
+      "traffic_network_density": 6.41352e-05,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.0001974,
+      "traffic_advantage": 0.000125495
+    },
+    "西安市": {
+      "traffic_network_density": 0.420487151,
+      "traffic_hub_influence": 0.75,
+      "location_advantage": 0.418954765,
+      "traffic_advantage": 0.515126446
+    },
+    "铜川市": {
+      "traffic_network_density": 0.361824127,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.005717818,
+      "traffic_advantage": 0.063945631
+    },
+    "宝鸡市": {
+      "traffic_network_density": 0.29255983,
+      "traffic_hub_influence": 0.178571429,
+      "location_advantage": 0.141184018,
+      "traffic_advantage": 0.168677706
+    },
+    "咸阳市": {
+      "traffic_network_density": 0.53423894,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.339116486,
+      "traffic_advantage": 0.28295046
+    },
+    "渭南市": {
+      "traffic_network_density": 0.482611805,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.112908093,
+      "traffic_advantage": 0.14154644
+    },
+    "延安市": {
+      "traffic_network_density": 0.147308205,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.064117923,
+      "traffic_advantage": 0.065031799
+    },
+    "汉中市": {
+      "traffic_network_density": 0.237185762,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.038983635,
+      "traffic_advantage": 0.0701949
+    },
+    "榆林市": {
+      "traffic_network_density": 0.244620259,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.123996632,
+      "traffic_advantage": 0.132377636
+    },
+    "安康市": {
+      "traffic_network_density": 0.33893911,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.016621531,
+      "traffic_advantage": 0.088684792
+    },
+    "商洛市": {
+      "traffic_network_density": 0.223852996,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.01754566,
+      "traffic_advantage": 0.045508368
+    },
+    "兰州市": {
+      "traffic_network_density": 0.194846741,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.045267307,
+      "traffic_advantage": 0.131450668
+    },
+    "嘉峪关市": {
+      "traffic_network_density": 0.059481119,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.00401347,
+      "traffic_advantage": 0.050379577
+    },
+    "金昌市": {
+      "traffic_network_density": 0.073417298,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.00727686,
+      "traffic_advantage": 0.012442019
+    },
+    "白银市": {
+      "traffic_network_density": 0.17319687,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.00401347,
+      "traffic_advantage": 0.031816881
+    },
+    "天水市": {
+      "traffic_network_density": 0.307269301,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.015512777,
+      "traffic_advantage": 0.063821575
+    },
+    "武威市": {
+      "traffic_network_density": 0.113795839,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.004071153,
+      "traffic_advantage": 0.03567452
+    },
+    "张掖市": {
+      "traffic_network_density": 0.071369993,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.008674629,
+      "traffic_advantage": 0.023412619
+    },
+    "平凉市": {
+      "traffic_network_density": 0.297318185,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.003130459,
+      "traffic_advantage": 0.034583276
+    },
+    "酒泉市": {
+      "traffic_network_density": 0.01345295,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.00234485,
+      "traffic_advantage": 0.033958163
+    },
+    "庆阳市": {
+      "traffic_network_density": 0.181476694,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.02345968,
+      "traffic_advantage": 0.034038244
+    },
+    "定西市": {
+      "traffic_network_density": 0.196570685,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.006456921,
+      "traffic_advantage": 0.025496928
+    },
+    "陇南市": {
+      "traffic_network_density": 0.200826037,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.00479369,
+      "traffic_advantage": 0.045681364
+    },
+    "西宁市": {
+      "traffic_network_density": 0.171222719,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.029373501,
+      "traffic_advantage": 0.077887171
+    },
+    "海东市": {
+      "traffic_network_density": 0.199680333,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.003569769,
+      "traffic_advantage": 0.055178127
+    },
+    "银川市": {
+      "traffic_network_density": 0.13172354,
+      "traffic_hub_influence": 0.142857143,
+      "location_advantage": 0.042384147,
+      "traffic_advantage": 0.081348649
+    },
+    "石嘴山市": {
+      "traffic_network_density": 0.145110887,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.00335221,
+      "traffic_advantage": 0.049044952
+    },
+    "吴忠市": {
+      "traffic_network_density": 0.200043417,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.008120351,
+      "traffic_advantage": 0.026876987
+    },
+    "固原市": {
+      "traffic_network_density": 0.186151439,
+      "traffic_hub_influence": 0.0,
+      "location_advantage": 0.005237192,
+      "traffic_advantage": 0.023618973
+    },
+    "中卫市": {
+      "traffic_network_density": 0.134127864,
+      "traffic_hub_influence": 0.107142857,
+      "location_advantage": 0.011336038,
+      "traffic_advantage": 0.052627116
+    },
+    "乌鲁木齐市": {
+      "traffic_network_density": 0.055192834,
+      "traffic_hub_influence": 0.285714286,
+      "location_advantage": 0.0290779,
+      "traffic_advantage": 0.106375094
+    },
+    "克拉玛依市": {
+      "traffic_network_density": 0.031993805,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.007233149,
+      "traffic_advantage": 0.028573493
+    },
+    "吐鲁番市": {
+      "traffic_network_density": 0.007581705,
+      "traffic_hub_influence": 0.071428571,
+      "location_advantage": 0.003019484,
+      "traffic_advantage": 0.023359964
+    },
+    "哈密市": {
+      "traffic_network_density": 0.008191229,
+      "traffic_hub_influence": 0.035714286,
+      "location_advantage": 0.007066885,
+      "traffic_advantage": 0.015498309
+    }
+  }
+}

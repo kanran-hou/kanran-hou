@@ -43,6 +43,7 @@ class DeepSeekProvider(LLMClient):
             "max_tokens": max_tokens,
         }
         resp = await self._client.post("/v1/chat/completions", json=payload)
+        resp = await self._client.post("/chat/completions", json=payload)
         resp.raise_for_status()
         data = resp.json()
         return data["choices"][0]["message"]["content"]

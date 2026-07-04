@@ -104,8 +104,10 @@ Page({
 
     var self = this;
     // 调用后端 API 进行 AI 分析
+    var app = getApp();
+    var apiBase = app.globalData.API_BASE_URL || 'http://localhost:8000';
     wx.request({
-      url: 'http://localhost:8000/api/v1/analyze',
+      url: apiBase + '/api/v1/analyze',
       method: 'POST',
       header: { 'Content-Type': 'application/json' },
       data: {

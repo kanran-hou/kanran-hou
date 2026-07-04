@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CopyMind - 快递网点运营分析</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif}
+body{background:#f0f2f5;color:#333;min-height:100vh}
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:24px 32px}
+.header h1{font-size:22px;font-weight:600}
+.header p{font-size:13px;opacity:.7;margin-top:2px}
+.header .tags{margin-top:8px;display:flex;gap:4px;flex-wrap:wrap}
+.header .tags span{font-size:10px;background:rgba(255,255,255,.1);padding:2px 8px;border-radius:20px;color:rgba(255,255,255,.8)}
+.container{max-width:1440px;margin:0 auto;padding:16px 20px}
+.controls{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.controls select{padding:8px 16px;border:2px solid #e0e0e0;border-radius:8px;font-size:14px;background:#fff;min-width:160px;cursor:pointer}
+.controls select:focus{border-color:#165DFF;outline:none}
+.controls .btn-primary{padding:8px 24px;background:#165DFF;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer}
+.controls .btn-primary:hover{background:#0e42c9}
+.controls .btn-primary:disabled{background:#a0b8f0;cursor:not-allowed}
+.section{background:#fff;border-radius:10px;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px}
+.section h2{font-size:15px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat-card{padding:12px;background:#f8f9fa;border-radius:8px;text-align:center}
+.stat-card .sl{font-size:11px;color:#888}
+.stat-card .sv{font-size:20px;font-weight:700;margin:2px 0}
+.stat-card .su{font-size:10px;color:#aaa}
+.map-row{display:flex;gap:12px;min-height:420px}
+.map-wrap{flex:1;border:1px solid #e5e8ed;border-radius:8px;overflow:hidden;position:relative;background:#f0f5ff}
+.map-wrap canvas{width:100%;height:100%;display:block}
+.map-wrap .map-loading{position:absolute;top:45%;left:0;width:100%;text-align:center;color:#86909c;font-size:13px;pointer-events:none}
+.district-panel{width:280px;flex-shrink:0;border:1px solid #e5e8ed;border-radius:8px;display:flex;flex-direction:column}
+.district-panel .panel-header{padding:10px 14px;font-size:13px;font-weight:600;border-bottom:1px solid #e5e8ed;background:#f7f8fa}
+.district-panel .panel-header .city-name{color:#165DFF}
+.district-panel .panel-body{flex:1;overflow-y:auto;padding:6px 0}
+.district-row{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:12px}
+.district-row .d-bar-wrap{width:60px;height:4px;background:#e5e8ed;border-radius:2px;overflow:hidden}
+.district-row .d-bar{height:100%;background:#165DFF;border-radius:2px;transition:width .3s}
+.district-row .d-bar.high{background:#FF7D00}
+.district-panel .panel-empty{padding:30px 12px;text-align:center;color:#c9cdd4;font-size:13px}
+.spatial-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.sp-item{text-align:center;padding:10px;background:#f8f9fa;border-radius:8px}
+.sp-item .sl{font-size:10px;color:#888}
+.sp-item .sv{font-size:16px;font-weight:700;margin:2px 0}
+.sp-item .su{font-size:9px;color:#aaa}
+.traffic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.t-item{padding:10px;background:#f8f9fa;border-radius:6px}
+.t-item .tl{font-size:10px;color:#888}
+.t-item .tv{font-size:13px;font-weight:600;margin:2px 0}
+.t-item .tb{height:4px;background:#e0e0e0;border-radius:2px;overflow:hidden}
+.t-item .tb .fill{height:100%;border-radius:2px}
+.score-row{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.score-item{flex:1;min-width:110px;text-align:center;padding:10px;background:#f8f9fa;border-radius:8px}
+.score-item .sl{font-size:11px;color:#888}
+.score-item .sv{font-size:24px;font-weight:700}
+.score-item .bar{height:4px;background:#e0e0e0;border-radius:2px;margin-top:6px;overflow:hidden}
+.score-item .bar .fill{height:100%;border-radius:2px}
+.summary-box{padding:12px;background:#f8f9fa;border-radius:6px;margin-bottom:12px;font-size:13px;line-height:1.5;color:#555}
+.problems li,.suggestions li{padding:8px 12px;margin-bottom:4px;border-radius:6px;font-size:13px;list-style:none}
+.problems li{background:#fef2f2;color:#dc2626;border-left:3px solid #dc2626}
+.suggestions li{background:#f0fdf4;color:#16a34a;border-left:3px solid #16a34a}
+.density-row{display:flex;justify-content:space-between;padding:5px 0;font-size:12px;border-bottom:1px solid #f0f0f0}
+.bs-card{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 12px;margin-bottom:6px}
+.bs-card .bsn{font-size:12px;font-weight:600;color:#dc2626}
+.bs-card .bsd{font-size:11px;color:#991b1b;margin-top:2px}
+.site-rec{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:8px 12px;margin-bottom:6px}
+.site-rec .srn{font-size:12px;font-weight:600;color:#16a34a}
+.site-rec .srd{font-size:11px;color:#166534;margin-top:2px}
+.loading{text-align:center;padding:30px;color:#888;font-size:13px}
+.report-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:160px;color:#c9cdd4}
+.report-empty .icon{font-size:32px;margin-bottom:6px}
+.loading-spinner{display:none;width:14px;height:14px;border:2px solid #e5e8ed;border-top-color:#165DFF;border-radius:50%;animation:spin .8s linear infinite}
+.loading-spinner.show{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:1024px){.map-row{flex-direction:column}.district-panel{width:100%;max-height:200px}}
+@media(max-width:768px){.controls select{min-width:120px;font-size:13px}.grid4{grid-template-columns:repeat(2,1fr)}.traffic-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="header"><h1>🚚 快递网点运营分析系统</h1><p>基于空间统计 + AI 的城市快递网点布局诊断</p><div class="tags"><span>核密度分析</span><span>标准差椭圆</span><span>最近邻距离</span><span>盲区识别</span><span>选址推荐</span><span>交通匹配度</span></div></div>
+<div class="container">
+<div class="controls">
+<select id="provinceSelect"><option value="">选择省份...</option></select>
+<select id="citySelect"><option value="">选择城市...</option></select>
+<button class="btn-primary" id="analyzeBtn" disabled>开始分析</button>
+<span id="statusText" style="font-size:12px;color:#888;margin-left:4px"></span>
+</div>
+<div id="statsSection" class="section" style="display:none"><h2>📊 关键指标</h2><div id="statsGrid" class="grid4"></div></div>
+<div id="mapSection" class="section" style="display:none"><h2>🗺️ 行政区网点分布</h2>
+<div class="map-row">
+  <div class="map-wrap"><canvas id="cityCanvas"></canvas><div class="map-loading" id="mapLoading">选择城市查看网点分布</div></div>
+  <div class="district-panel">
+    <div class="panel-header">区县网点 · <span class="city-name" id="panelCityName">未选择</span></div>
+    <div class="panel-body" id="panelBody"><div class="panel-empty">请选择一个城市</div></div>
+  </div>
+</div></div>
+<div id="spatialSection" class="section" style="display:none"><h2>📍 空间分布指标</h2><div id="spatialGrid" class="spatial-grid"></div></div>
+<div id="blindSection" class="section" style="display:none"><h2>⚠️ 盲区识别</h2><div id="blindContent"></div></div>
+<div id="trafficSection" class="section" style="display:none"><h2>🚦 交通优势度</h2><div id="trafficGrid" class="traffic-grid"></div></div>
+<div id="analysisSection" class="section" style="display:none"><h2>🤖 AI 运营分析<span class="loading-spinner" id="aiSpinner"></span></h2><div id="analysisContent"><div class="report-empty"><div class="icon">🤖</div><div>选择一个城市并点击「开始分析」</div></div></div></div>
+</div>
+
+<script>
+var cityData=null,selectedDistrict=null,geojsonCache={},
+st=document.getElementById("statusText"),
+pSel=document.getElementById("provinceSelect"),
+cSel=document.getElementById("citySelect"),
+aBtn=document.getElementById("analyzeBtn"),
+aiSpin=document.getElementById("aiSpinner"),
+statsSec=document.getElementById("statsSection"),statsG=document.getElementById("statsGrid"),
+mapSec=document.getElementById("mapSection"),
+mapLoading=document.getElementById("mapLoading"),
+panelCity=document.getElementById("panelCityName"),
+panelBody=document.getElementById("panelBody"),
+spatSec=document.getElementById("spatialSection"),spatG=document.getElementById("spatialGrid"),
+blindSec=document.getElementById("blindSection"),blindC=document.getElementById("blindContent"),
+traffSec=document.getElementById("trafficSection"),traffG=document.getElementById("trafficGrid"),
+anaSec=document.getElementById("analysisSection"),anaC=document.getElementById("analysisContent");
+
+fetch("/api/provinces").then(r=>r.json()).then(function(d){
+  pSel.innerHTML="";
+  d.forEach(function(p){var o=document.createElement("option");o.value=p.province;o.textContent=p.province+" ("+(p.city_count===1?p.district_count+"区":p.city_count+"市")+")";pSel.appendChild(o)});
+  if(d.length>0)loadCities(d[0].province);
+});
+
+pSel.addEventListener("change",function(){if(this.value)loadCities(this.value)});
+
+var allCities=[];
+function loadCities(province){
+  cSel.innerHTML='<option value="">加载中...</option>';
+  aBtn.disabled=true;selectedDistrict=null;
+  fetch("/api/cities?province="+encodeURIComponent(province)).then(r=>r.json()).then(function(d){
+    allCities=d;cSel.innerHTML="";cityData=null;
+    if(d.length===1&&d[0].districts_count>1){
+      var c=d[0];
+      c.districts.forEach(function(dd){
+        var o=document.createElement("option");o.value=dd.name;
+        o.textContent=dd.name+"（"+dd.count+"个）";cSel.appendChild(o)
+      });
+      if(c.districts.length>0){cSel.value=c.districts[0].name;selectCity(c,true)}
+    }else{
+      d.forEach(function(c){
+        var o=document.createElement("option");o.value=c.city;
+        o.textContent=c.city+" ("+c.total_points+"个)";cSel.appendChild(o)
+      });
+      if(d.length>0){cSel.value=d[0].city;selectCity(d[0])}
+    }
+    aBtn.disabled=false;
+  });
+}
+cSel.addEventListener("change",function(){
+  if(!this.value||!allCities.length)return;
+  var c=allCities.find(function(x){return x.city===cSel.value});
+  if(c)selectCity(c);
+  else if(allCities.length===1&&allCities[0].districts_count>1){
+    // District was selected in a municipality
+    var city=allCities[0];
+    var dd=city.districts.find(function(x){return x.name===cSel.value});
+    if(dd)selectCity(city,true);
+  }
+});
+
+function selectCity(c,isDistrict){
+  if(!c)return;cityData=c;st.textContent="";
+  selectedDistrict=isDistrict?cSel.value:null;
+  renderStats(c);renderMap(c);renderSpatial(c);renderBlind(c);renderTraffic(c);
+  anaSec.style.display="none";
+}
+
+function renderStats(c){
+  statsSec.style.display="block";statsG.innerHTML="";
+  var pts=c.total_points,districts=c.districts_count,dens=c.density_per_km2,sd=c.std_distance_km;
+  if(selectedDistrict&&c.district_densities){
+    var dd=c.district_densities.find(function(x){return x.name===selectedDistrict});
+    if(dd){pts=dd.count;districts=1;dens=dd.density;sd=0;}
+  }
+  [[pts,"快递网点总数","个","#3b82f6"],[districts,"覆盖区县","个","#10b981"],[typeof dens==="number"?dens.toFixed(4):"--","网点密度","个/km²","#f59e0b"],[sd||"--","标准差距离","km","#8b5cf6"]].forEach(function(x){
+    var d=document.createElement("div");d.className="stat-card";
+    d.innerHTML="<div class=sl>"+x[1]+"</div><div class=sv style=color:"+x[3]+">"+x[0]+"</div><div class=su>"+x[2]+"</div>";statsG.appendChild(d)});
+}
+
+function renderMap(c){
+  if(!c)return;mapSec.style.display="block";panelCity.textContent=c.city;
+  updateDistrictPanel(c);renderCityMap(c.city,c);
+}
+
+function updateDistrictPanel(d){
+  if(!d.districts||!d.districts.length){panelBody.innerHTML='<div class="panel-empty">暂无区县数据</div>';return}
+  var mx=Math.max.apply(null,d.districts.map(function(x){return x.count}));
+  panelBody.innerHTML=d.districts.sort(function(a,b){return b.count-a.count}).map(function(x){
+    var p=(x.count/mx*100)|0,cls=x.count>=mx*0.7?"d-bar high":"d-bar";
+    var active=selectedDistrict===x.name?' style="background:#e8f0fe;font-weight:700"':'';
+    return '<div class="district-row"'+active+'><span>'+x.name+'</span><span>（'+x.count+'个）</span><div class="d-bar-wrap"><div class="'+cls+'" style="width:'+p+'%"></div></div></div>'
+  }).join("");
+}
+
+async function renderCityMap(cityName,cityData){
+  var canvas=document.getElementById("cityCanvas"),loading=document.getElementById("mapLoading");
+  loading.textContent="正在渲染区划图...";
+  var geojson;
+  if(geojsonCache[cityName]){geojson=geojsonCache[cityName]}
+  else{
+    try{var r=await fetch("/api/geojson/"+encodeURIComponent(cityName));geojson=await r.json();
+      if(geojson.error){loading.textContent="无区划数据";return}
+      geojsonCache[cityName]=geojson;
+    }catch(e){loading.textContent="区划数据加载失败";return}
+  }
+  var rect=canvas.parentElement.getBoundingClientRect();
+  var dpr=window.devicePixelRatio||1;
+  canvas.width=(rect.width||600)*dpr;canvas.height=(rect.height||400)*dpr;
+  canvas.style.width=(rect.width||600)+"px";canvas.style.height=(rect.height||400)+"px";
+  var ctx=canvas.getContext("2d");ctx.scale(dpr,dpr);
+  var W=canvas.width/dpr,H=canvas.height/dpr;
+  var features=geojson.features||[];
+  // Filter to single district if selectedDistrict is set
+  if(selectedDistrict){
+    features=features.filter(function(f){return (f.properties||{}).name===selectedDistrict});
+  }
+  var minLng=Infinity,maxLng=-Infinity,minLat=Infinity,maxLat=-Infinity;
+  for(var i=0;i<features.length;i++){
+    var coords=extractCoords(features[i]);
+    for(var j=0;j<coords.length;j++){var lng=coords[j][0],lat=coords[j][1];
+      if(lng<minLng)minLng=lng;if(lng>maxLng)maxLng=lng;if(lat<minLat)minLat=lat;if(lat>maxLat)maxLat=lat;}
+  }
+  if(!isFinite(minLng)){loading.textContent="无有效坐标";return}
+  var pad=(maxLng-minLng)*0.05||0.05;minLng-=pad;maxLng+=pad;minLat-=pad;maxLat+=pad;
+  var margin=32,aw=W-margin*2,ah=H-margin*2,scale=Math.min(aw/(maxLng-minLng),ah/(maxLat-minLat));
+  function project(lng,lat){return{x:margin+(lng-minLng)*scale,y:margin+(maxLat-lat)*scale}}
+  var densityMap={},maxD=0,dd=cityData.district_densities||cityData.districts||[];
+  for(var i=0;i<dd.length;i++){var v=typeof dd[i].density==="number"?dd[i].density:dd[i].count;densityMap[dd[i].name]=v;if(v>maxD)maxD=v;}
+  function fillColor(val){if(!val||maxD===0)return"#f0f5ff";var t=Math.min(val/maxD,1);return"rgb("+Math.round(220+(0-220)*t)+","+Math.round(235+(70-235)*t)+","+Math.round(255+(149-255)*t)+")"}
+  function lblColor(val){if(!val||maxD===0)return"#4e5969";return Math.min(val/maxD,1)>0.5?"#fff":"#1d2129"}
+  ctx.clearRect(0,0,W,H);ctx.fillStyle="#f0f5ff";ctx.fillRect(0,0,W,H);
+  var polyCache={};
+  for(var i=0;i<features.length;i++){
+    var feat=features[i],name=(feat.properties||{}).name||"",cArr=extractCoords(feat);
+    if(cArr.length<3)continue;
+    var pts=cArr.map(function(p){return project(p[0],p[1])}),dv=densityMap[name]||0;
+    polyCache[name]=pts;
+    ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);
+    for(var j=1;j<pts.length;j++)ctx.lineTo(pts[j].x,pts[j].y);ctx.closePath();
+    ctx.fillStyle=fillColor(dv);ctx.fill();
+    ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+    var cx=pts.reduce(function(s,p){return s+p.x},0)/pts.length,cy=pts.reduce(function(s,p){return s+p.y},0)/pts.length;
+    ctx.fillStyle=lblColor(dv);ctx.font="12px -apple-system,Microsoft YaHei,sans-serif";
+    ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(name,cx,cy-6);
+    if(dv){ctx.font="10px -apple-system,Microsoft YaHei,sans-serif";ctx.fillStyle=lblColor(dv);ctx.globalAlpha=0.7;ctx.fillText(typeof dv==="number"?dv.toFixed(2):dv,cx,cy+8);ctx.globalAlpha=1;}
+  }
+  var dotData=cityData.district_densities||cityData.districts||[];
+  for(var i=0;i<dotData.length;i++){
+    var ddi=dotData[i],poly=polyCache[ddi.name];if(!poly||poly.length<3)continue;
+    var cnt=Math.min(ddi.count||0,80);if(cnt<=0)continue;
+    var bx1=Infinity,bx2=-Infinity,by1=Infinity,by2=-Infinity;
+    for(var k=0;k<poly.length;k++){if(poly[k].x<bx1)bx1=poly[k].x;if(poly[k].x>bx2)bx2=poly[k].x;if(poly[k].y<by1)by1=poly[k].y;if(poly[k].y>by2)by2=poly[k].y;}
+    ctx.fillStyle="#FF7D00";var placed=0,attempts=0;
+    while(placed<cnt&&attempts<cnt*50){var px=bx1+Math.random()*(bx2-bx1),py=by1+Math.random()*(by2-by1);
+      if(pointInPoly(px,py,poly)){ctx.globalAlpha=0.3+Math.random()*0.4;ctx.beginPath();ctx.arc(px,py,2,0,Math.PI*2);ctx.fill();placed++}attempts++}
+  }
+  ctx.globalAlpha=1;
+  drawLegend(ctx,W,H,maxD);loading.textContent="";
+}
+function extractCoords(f){var g=f.geometry;if(!g)return[];if(g.type==="Polygon")return g.coordinates[0];if(g.type==="MultiPolygon")return g.coordinates[0][0];return[]}
+function pointInPoly(x,y,p){var inside=false;for(var i=0,j=p.length-1;i<p.length;j=i++){if((p[i].y>y)!==(p[j].y>y)&&x<(p[j].x-p[i].x)*(y-p[i].y)/(p[j].y-p[i].y)+p[i].x)inside=!inside}return inside}
+function drawLegend(ctx,W,H,maxD){
+  if(maxD<=0)return;var lx=W-110,ly=20,lw=18,lh=120;
+  ctx.fillStyle="rgba(255,255,255,0.9)";ctx.strokeStyle="#d0d5dd";ctx.lineWidth=1;
+  ctx.beginPath();ctx.rect(lx,ly,90,lh+30);ctx.fill();ctx.stroke();
+  for(var i=0;i<lh;i++){var t=i/lh;ctx.fillStyle="rgb("+Math.round(220+(0-220)*(1-t))+","+Math.round(235+(70-235)*(1-t))+","+Math.round(255+(149-255)*(1-t))+")";ctx.fillRect(lx+8,ly+15+i,lw,1)}
+  ctx.strokeStyle="#d0d5dd";ctx.lineWidth=1;ctx.strokeRect(lx+8,ly+15,lw,lh);
+  ctx.fillStyle="#86909c";ctx.font="10px sans-serif";ctx.textAlign="left";ctx.textBaseline="top";
+  ctx.fillText(maxD.toFixed(1),lx+lw+14,ly+13);ctx.fillText((maxD/2).toFixed(1),lx+lw+14,ly+13+lh/2-5);ctx.fillText("0",lx+lw+14,ly+13+lh-2);
+  ctx.fillStyle="#4e5969";ctx.font="10px sans-serif";ctx.textAlign="center";ctx.textBaseline="bottom";ctx.fillText("网点密度",lx+8+lw/2,ly+10);
+  ctx.fillStyle="#FF7D00";ctx.globalAlpha=0.6;ctx.beginPath();ctx.arc(lx+8+lw/2,ly+lh+22,2.5,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=1;ctx.fillStyle="#86909c";ctx.font="9px sans-serif";ctx.textAlign="center";ctx.textBaseline="top";ctx.fillText("网点",lx+8+lw/2,ly+lh+26)}
+
+function renderSpatial(c){
+  spatSec.style.display="block";var e=c.std_ellipse||{x_std_km:0,y_std_km:0,angle_deg:0,area_km2:0};
+  var k=c.kde||{high_density_ratio:0,low_density_ratio:0},nnd=c.avg_nnd_km||0;
+  spatG.innerHTML=[["椭圆面积",e.area_km2,"km²","#8b5cf6"],["长轴",e.y_std_km,"km","#3b82f6"],["短轴",e.x_std_km,"km","#3b82f6"],["方向角",e.angle_deg,"°","#f59e0b"],["最近邻距离",nnd,"km","#10b981"],["高密度区",k.high_density_ratio,"%","#ef4444"],["低密度区",k.low_density_ratio,"%","#888"]].map(function(s){return'<div class="sp-item"><div class=sl>'+s[0]+'</div><div class=sv style=color:'+s[3]+'>'+s[1]+'</div><div class=su>'+s[2]+'</div></div>'}).join("");
+}
+
+function renderBlind(c){
+  var bl=c.blind_spots||[],dd=c.district_densities||[];
+  if(!dd.length){blindSec.style.display="none";return}
+  blindSec.style.display="block";var h='<h3 style="font-size:13px;margin-bottom:6px;color:#555">区县密度排名</h3>';
+  dd.forEach(function(d,i){var cl=i<2?"#10b981":i<4?"#f59e0b":"#ef4444";h+='<div class="density-row"><span>#'+(i+1)+" "+d.name+'</span><span style="color:'+cl+';font-weight:600">'+d.density+'</span></div>'});
+  if(bl.length){h+='<h3 style="font-size:13px;margin:10px 0 6px;color:#dc2626">目前盲区</h3>';bl.forEach(function(b){h+='<div class="bs-card"><div class=bsn>'+b.district+'</div><div class=bsd>'+b.count+'个网点，密度'+b.density+'，'+b.reason+'</div></div>'})}
+  else{h+='<div style="background:#f0fdf4;color:#16a34a;padding:8px 12px;border-radius:6px;margin-top:8px;font-size:12px">✅ 各区县覆盖合理，无明显盲区</div>'}
+  blindC.innerHTML=h;
+}
+
+function renderTraffic(c){
+  traffSec.style.display="block";
+  var items=[["交通网络密度",c.traffic_network_density||0,"#3b82f6"],["交通枢纽影响度",c.traffic_hub_influence||0,"#10b981"],["区位优势度",c.location_advantage||0,"#f59e0b"],["综合交通优势度",c.traffic_advantage||0,"#8b5cf6"]];
+  var mv=Math.max.apply(null,items.map(function(i){return i[1]}),0.01);
+  traffG.innerHTML=items.map(function(i){return'<div class="t-item"><div class=tl>'+i[0]+'</div><div class=tv style=color:'+i[2]+'>'+(i[1]*100).toFixed(1)+'<span style="font-size:10px;color:#888;font-weight:400;margin-left:2px">%</span></div><div class=tb><div class=fill style="width:'+(i[1]/mv*100).toFixed(1)+'%;background:'+i[2]+';transition:width .8s"></div></div></div>'}).join("");
+}
+
+aBtn.addEventListener("click",async function(){
+  var city=cityData.city;if(!city||!cityData)return;
+  aBtn.disabled=true;aBtn.textContent="分析中...";aiSpin.classList.add("show");
+  anaSec.style.display="block";anaC.innerHTML='<div class="report-empty"><div class="icon">⏳</div><div>正在调用 AI 分析...</div></div>';
+  try{var r=await fetch("/api/analyze?city="+encodeURIComponent(cityData.city));var result=await r.json();
+    if(result.ai_report&&!result.ai_report.error){renderAI(result.ai_report)}else{anaC.innerHTML='<div class="report-empty"><div class="icon">⚠️</div><div>AI 分析暂不可用'+(result.ai_report?.error?": "+result.ai_report.error:"")+'</div></div>'}}
+  catch(e){anaC.innerHTML='<div class="loading">请求失败: '+e.message+'</div>'}
+  finally{aBtn.disabled=false;aBtn.textContent="开始分析";aiSpin.classList.remove("show");st.textContent="✅ 分析完成"}
+});
+
+function renderAI(report){
+  var gc=report.overall_grade||"B";gc=gc=="A"?"#10b981":gc=="C"?"#ef4444":"#f59e0b";
+  var sc=[["布局合理性",report.layout_score||0],["交通匹配度",report.traffic_match_score||0],["覆盖均衡性",report.balance_score||0],["综合评分",report.overall_score||0]];
+  var h='<div class="summary-box">📊 '+(report.summary||"")+'</div><div style="margin-bottom:10px;font-size:13px">综合评级: <strong style="font-size:20px;color:'+gc+'">'+report.overall_grade+'</strong></div>';
+  h+='<div class="score-row">'+sc.map(function(s){return'<div class="score-item"><div class=sl>'+s[0]+'</div><div class=sv style="color:'+getColor(s[1])+'">'+s[1]+'</div><div class=bar><div class=fill style="width:'+s[1]+'%;background:'+getColor(s[1])+';transition:width .8s"></div></div></div>'}).join("")+'</div>';
+  if(report.site_recommendations&&report.site_recommendations.length){h+='<h3 style="font-size:14px;margin:12px 0 6px;color:#16a34a">📍 选址推荐</h3>';report.site_recommendations.forEach(function(s){h+='<div class="site-rec"><div class=srn>'+s.location+'</div><div class=srd>'+s.reason+'</div></div>'})}
+  h+='<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px"><div style="flex:1;min-width:240px"><h3 style="font-size:14px;margin-bottom:6px;color:#dc2626">⚠️ 存在问题</h3><ul class=problems>'+(report.problems||[]).map(function(p){return"<li>"+p+"</li>"}).join("")+'</ul></div>';
+  h+='<div style="flex:1;min-width:240px"><h3 style="font-size:14px;margin-bottom:6px;color:#16a34a">💡 优化建议</h3><ul class=suggestions>'+(report.suggestions||[]).map(function(s){return"<li>"+s+"</li>"}).join("")+'</ul></div></div>';
+  anaC.innerHTML=h;
+}
+function getColor(v){return v>=80?"#10b981":v>=60?"#f59e0b":"#ef4444"}
+
+window.addEventListener("resize",function(){if(cityData)renderCityMap(cityData.city,cityData)});
+</script>
+</body>
+</html>

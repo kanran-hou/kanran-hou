@@ -1,6 +1,8 @@
 // CopyMind 文案智能分析 —— 全局应用入口
 App({
   globalData: {
+    // API 后端地址：本地开发用 localhost，手机测试改成 ngrok 地址或局域网 IP
+    API_BASE_URL: 'http://localhost:8000',
     analysisResult: null,    // 最近一次分析结果
     trackList: [
       { id: 'xiaohongshu', name: '小红书种草', color: '#FF6B6B' },
