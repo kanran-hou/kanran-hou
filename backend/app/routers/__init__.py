@@ -1,0 +1,13 @@
+from app.routers.health import router as health_router
+from app.routers.analyze import router as analyze_router
+from app.routers.history import router as history_router
+from app.routers.feedback import router as feedback_router
+from app.routers.ocr import router as ocr_router
+from app.routers.knowledge import router as knowledge_router
+from app.routers.admin import router as admin_router
+from app.routers.health import router as health_router
+from app.routers.analyze import router as analyze_router
+from app.routers.history import router as history_router
+from app.routers.feedback import router as feedback_router
+from app.routers.ocr import router as ocr_router
+from app.routers.knowledge import router as knowledge_router

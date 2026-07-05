@@ -1,0 +1,333 @@
+/* ============================================================
+   CopyMind 文案录入首页 — 美化版样式
+   配色简约商务风 · 卡片式布局 · 安全区适配
+============================================================ */
+
+/* ---- 全局变量 ---- */
+page {
+  --primary: #4A7CF7;
+  --primary-light: #EEF2FF;
+  --bg: #FFFFFF;
+  --text: #1A1A2E;
+  --text-secondary: #6B7280;
+  --text-light: #9CA3AF;
+  --border: #EEEEEE;
+  --shadow-sm: 0 2rpx 8rpx rgba(0,0,0,0.04);
+  --radius-card: 16rpx;
+  --radius-input: 20rpx;
+  --radius-btn: 24rpx;
+  --padding-h: 24rpx;
+  --section-gap: 30rpx;
+}
+
+/* ---- 页面容器 ---- */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ---- 顶部留白 ---- */
+.top-spacer {
+  height: 40rpx;
+}
+
+/* ---- 滚动区域 ---- */
+.scroll-area {
+  flex: 1;
+  padding: 0 var(--padding-h);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---- 模块容器 ---- */
+.section {
+  margin-bottom: var(--section-gap);
+}
+
+/* ---- 模块标题 ---- */
+.section-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20rpx;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   赛道选择 — 2x2 网格卡片
+============================================================ */
+.track-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.track-card {
+  width: calc(50% - 8rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  padding: 32rpx 16rpx;
+  background: #F8F9FA;
+  border: 2rpx solid var(--border);
+  border-radius: var(--radius-card);
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.track-card:active {
+  opacity: 0.8;
+}
+
+/* 选中态 */
+.track-card.track-active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.track-card.track-active .track-label {
+  color: #FFFFFF;
+}
+
+.track-card.track-active .track-emoji {
+  /* 选中态图标保持可读 */
+}
+
+/* 未选中态文字 */
+.track-label {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.track-emoji {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+/* ============================================================
+   文案输入框
+============================================================ */
+.input-area {
+  display: block;
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  border: 2rpx solid var(--border);
+  border-radius: var(--radius-input);
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: var(--text);
+  background: #FAFBFC;
+  box-sizing: border-box;
+}
+
+.input-area:focus {
+  border-color: var(--primary);
+  background: #FFFFFF;
+}
+
+/* 输入框占位提示文字（微信原生支持） */
+.input-area .wx-input-placeholder,
+.input-area::placeholder {
+  font-size: 24rpx;
+  color: #C0C4CC;
+}
+
+/* ---- 字数统计（右下角） ---- */
+.input-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10rpx;
+  padding: 0 6rpx;
+}
+
+.char-count {
+  font-size: 22rpx;
+  color: var(--text-light);
+}
+
+/* ============================================================
+   图片上传
+============================================================ */
+.section-upload {
+  margin-bottom: var(--section-gap);
+}
+
+.upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 14rpx 22rpx;
+  background: #F8F9FA;
+  border: 2rpx solid var(--border);
+  border-radius: 14rpx;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.upload-btn:active {
+  opacity: 0.7;
+}
+
+.upload-icon {
+  font-size: 28rpx;
+  line-height: 1;
+}
+
+.upload-text {
+  font-size: 24rpx;
+  font-weight: 400;
+}
+
+.upload-count {
+  font-size: 22rpx;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ---- 图片预览 ---- */
+.image-preview-list {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+  margin-top: 14rpx;
+}
+
+.image-preview-item {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+}
+
+.img-remove {
+  position: absolute;
+  top: 4rpx;
+  right: 4rpx;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 32rpx;
+}
+
+/* ============================================================
+   底部固定按钮
+============================================================ */
+.btn-fixed-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16rpx var(--padding-h)
+    calc(env(safe-area-inset-bottom) + 24rpx)
+    var(--padding-h);
+  background: linear-gradient(to top, #FFFFFF 60%, rgba(255,255,255,0));
+  z-index: 50;
+}
+
+.btn-analyze {
+  width: 100%;
+  padding: 28rpx 0;
+  background: var(--primary);
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-btn);
+  text-align: center;
+  box-shadow: 0 4rpx 16rpx rgba(74,124,247,0.3);
+  line-height: 1.2;
+}
+
+.btn-analyze:active {
+  opacity: 0.88;
+}
+
+.btn-disabled {
+  background: #B3C8FC;
+  box-shadow: none;
+}
+
+/* ---- 底部按钮预留白 ---- */
+.bottom-safe-spacer {
+  height: 160rpx;
+}
+
+/* ============================================================
+   底部说明文字
+============================================================ */
+.footer-tip {
+  text-align: center;
+  padding: 10rpx 0;
+  line-height: 1.8;
+}
+
+.footer-tip text {
+  display: block;
+  font-size: 22rpx;
+  color: #C0C4CC;
+}
+
+/* ============================================================
+   加载遮罩
+============================================================ */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.loader {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid #EEEEEE;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.loading-sub {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-light);
+}
